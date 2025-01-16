@@ -1,0 +1,14 @@
+# Xcode
+*.xcuserdata
+*.xccheckout
+*.xcscmblueprint
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata
+*.xcworkspace
+*.swiftpm
+.build/
+DerivedData/
+
+
+
