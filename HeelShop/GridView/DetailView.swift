@@ -22,8 +22,9 @@ struct DetailView: View {
                 Text(posting.title)
                 Image(systemName: "heart")
             }
+            .padding()
             Text(posting.description)
-            
+                .padding()
         }
     }
 }
