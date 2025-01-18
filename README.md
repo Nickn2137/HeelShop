@@ -1,20 +1,10 @@
 ## HeelShop
-
-
-
-## Description
-**What is my app, and why is it useful?**
-
-HeelShop is a campus specific marketplace app.
+HeelShop is a marketplace app designed specifically for university students to buy and sell items locally with ease. Unlike traditional platforms, HeelShop eliminates the need for shipping, long-distance travel, or dealing with strangers by restricting access to verified students within the same school. Additionally, HeelShop provides an outlet for student-made businesses to not only sell their products but also promote their brand within the campus community. Currently, the only comparable method is posting on social media platforms. However, this approach lacks organization, clutters users feeds with items that might not interest them, and discourages many individuals who feel too shy to post publicly. HeelShop addresses these challenges by creating a safer, more organized, and community-focused marketplace tailored to the unique needs of campus life.
 
 ## Functionality
-**App Functionality from the user's perspective**
-
 Only individuals with a university emailc an access the app. Users login and would be able to post either items to sell or create a personal business.
 
 ## Process
-**How I made the app**
-
 My friend made me a mockup, and using this rough outline I logged into Swift and let my creativity loose.
 
 ## Attributes
@@ -62,9 +52,3 @@ My friend made me a mockup, and using this rough outline I logged into Swift and
   <summary>Data Base</summary>
   While the app is currently tied to a mockdata API, I hope to be able to create my own data base complete with user account information, listings, and businesses.
 </details>
-
-
-
----
-
-Feel free to customize and fill out the placeholders with details specific to your app!
