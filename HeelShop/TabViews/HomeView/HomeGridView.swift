@@ -37,9 +37,9 @@ struct HomeGridView: View {
                         SubHeading(title: "TRENDING PRODUCTS", showButton: true)
                         LazyVGrid(columns: gridViewModel.double) {
                             
-                            // !!! TEMPORARY triple() FUNCTION !!!
+                            // !!! TEMPORARY "dummyPostings" VARIABLE !!!
                             
-                            ForEach(triple(input: gridViewModel.postings)) { posting in
+                            ForEach(gridViewModel.dummyPostings) { posting in
                                 NavigationLink(value: posting) {
                                     VStack{
                                         ProductCell(posting: posting, width: 150, height: 150)

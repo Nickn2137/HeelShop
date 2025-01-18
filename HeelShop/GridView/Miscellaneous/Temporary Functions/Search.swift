@@ -22,7 +22,7 @@ struct Search: View {
                     .frame(width: 35, height: 35)
                 
             }
-            .padding(.horizontal, 15)
+            .padding(15)
     }
 }
 

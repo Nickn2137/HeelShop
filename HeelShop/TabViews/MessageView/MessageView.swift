@@ -22,10 +22,10 @@ struct MessageView: View {
                     HStack {
                         Spacer() // Push the image to the far right
                         
-                        Image(systemName: "bag")
+                        Image(systemName: "bell")
                             .resizable()
-                            .frame(width: 35, height: 35)
-                            .padding(.bottom)
+                            .frame(width: 25, height: 25)
+
                     }
                     .padding()
                 }

@@ -7,7 +7,7 @@
 
 
 //MOCK TRIPLE FUNC
-func triple(input: [Posting]) -> [Posting] {
+func tripleArray(input: [Posting]) -> [Posting] {
     return Array(repeating: input, count: 3)
         .flatMap { $0 }
         .enumerated()

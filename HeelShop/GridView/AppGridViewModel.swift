@@ -19,6 +19,11 @@ final class AppGridViewModel: ObservableObject {
     let single: [GridItem] = [GridItem(.flexible())]
     
     @Published var postings: [Posting] = []
+    
+    { didSet { self.dummyPostings = tripleArray(input: postings) } } // THIS LINE IS TEMPORARY, ONLY FOR TESTING
+    @Published var dummyPostings: [Posting] = [] // THIS LINE IS TEMPORARY, ONLY FOR TESTING
+    
+    
     @Published var discounts: [Posting] = []
     @Published var businesses: [Business] = MockBusinesses.businesses // TEMPORARY MOCK BUSINESSES
     @Published var alertItem: alertItem?

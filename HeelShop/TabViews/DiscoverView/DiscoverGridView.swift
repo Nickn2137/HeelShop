@@ -55,11 +55,11 @@ struct DiscoverGridView: View {
                         }
                         
                         // DISCOUNTS
-                        //TODO "triple(input: discoverGridViewModel.postings).filter { $0.isDiscounted == true }" SHOULD NOT BE IN FINAL
+                        //TODO "discoverGridViewModel.dummyPostings.filter { $0.isDiscounted == true }" SHOULD NOT BE IN FINAL
                         SubHeading(title: "DISCOUNTS & DEALS", showButton: true)
                         ScrollView(.horizontal, showsIndicators: false) {
                             LazyHGrid(rows: discoverGridViewModel.triple) {
-                                ForEach(triple(input: discoverGridViewModel.postings).filter { $0.isDiscounted == true }) {posting in
+                                ForEach(discoverGridViewModel.dummyPostings.filter { $0.isDiscounted == true }) {posting in
                                     NavigationLink(value: posting) {
                                         VStack{
                                             ProductCell(posting: posting, width: 150, height: 150)
