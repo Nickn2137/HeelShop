@@ -33,52 +33,46 @@ struct DiscoverGridView: View {
                             }
                         }
                         
-                        // CATEGORIES: Room Essentials, Clothing, Items, Utilities, Services??
+                        // CATEGORIES: Room Essentials, Clothing, Items, Utilities ?
+                        // TODO, use a database, another API, or filter one out?
                         SubHeading(title: "SHOP BY CATEGORY", showButton: false)
-                        LazyVGrid(columns: discoverGridViewModel.single) {
-                            ForEach(1...4, id: \.self) { number in
-                                Button {
-                                    //TODO
-                                } label: {
-                                    Image("business")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .frame(width: nil, height: 150)
-                                        .cornerRadius(8)
-                                }
-                            }
+                        LazyVGrid(columns: discoverGridViewModel.single, spacing: 10) {
+                            CategoryButton(image: "clothes", text: "Clothes")
+                            CategoryButton(image: "room", text: "Dorm Decor")
+                            CategoryButton(image: "bike", text: "Utilities")
+                            CategoryButton(image: "house", text: "Others")
                         }
                         
                         // EXPLORE: Display reviews ?
+                        // TODO, use a database, another API, or filter one out?
                         SubHeading(title: "EXPLORE", showButton: true)
                         ScrollView(.horizontal, showsIndicators: false) {
                             LazyHGrid(rows: discoverGridViewModel.single) {
                                 ForEach(MockBusinesses.businesses) { business in
-                                    Boxify(isHorizontal: true)
+                                    ReviewView()
                                 }
                             }
                         }
                         
                         // DISCOUNTS
+                        //TODO "triple(input: discoverGridViewModel.postings).filter { $0.isDiscounted == true }" SHOULD NOT BE IN FINAL
                         SubHeading(title: "DISCOUNTS & DEALS", showButton: true)
                         ScrollView(.horizontal, showsIndicators: false) {
                             LazyHGrid(rows: discoverGridViewModel.triple) {
-                                ForEach(triple(input: discoverGridViewModel.postings)) { posting in
-                                    if posting.isDiscounted == true {
-                                        Button {
-                                            //TODO
-                                        }
-                                        label: {
+                                ForEach(triple(input: discoverGridViewModel.postings).filter { $0.isDiscounted == true }) {posting in
+                                    NavigationLink(value: posting) {
+                                        VStack{
                                             ProductCell(posting: posting, width: 150, height: 150)
-                                            
                                         }
                                     }
                                 }
                             }
+                            .navigationDestination(for: Posting.self) { posting in DetailView(posting: posting)}
                         }
                     }
                 }
                 .padding(15)
+                .scrollIndicators(.hidden)
             }
             .onAppear() {
                 discoverGridViewModel.getPostings()

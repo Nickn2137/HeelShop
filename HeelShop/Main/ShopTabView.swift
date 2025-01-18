@@ -1,39 +1,60 @@
-//
-//  ContentView.swift
-//  HeelShop
-//
-//  Created by Nicholas Nguyen on 1/4/25.
-//
-
 import SwiftUI
 
 struct ShopTabView: View {
+    init() {
+        UITabBar.appearance().backgroundColor = UIColor.white
+        }
+    
     var body: some View {
-        TabView {
-            Homeview()
-                .tabItem{
-                    Image(systemName: "house")
-                    Text("Home")
+        VStack {
+            ZStack {
+                TabView {
+                    Homeview()
+                        .tabItem {
+                            Image(systemName: "house")
+                            Text("Home")
+                        }
+                    DiscoverView()
+                        .tabItem {
+                            Image(systemName: "magnifyingglass")
+                            Text("Discover")
+                        }
+                    Spacer()
+                    MessageView()
+                        .tabItem {
+                            Image(systemName: "message")
+                            Text("Messages")
+                        }
+                    AccountView()
+                        .tabItem {
+                            Image(systemName: "person")
+                            Text("Account")
+                        }
                 }
-                .toolbarBackground(.white, for: .tabBar)
-            DiscoverView()
-                .tabItem{
-                    Image(systemName: "magnifyingglass")
-                    Text("Discover")
+                .accentColor(.tarheel)
+                // Custom Plus Button
+                VStack {
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            // TODO
+                            print("Plus button tapped")
+                        }) {
+                            Image(systemName: "plus.circle.fill")
+                                .resizable()
+                                .frame(width: 75, height: 75)
+                                .foregroundColor(.tarheel)
+                                .background(
+                                    Circle()
+                                        .fill(Color.white)
+                                        .shadow(color: .gray, radius: 4, x: 0, y: 2)
+                                )
+                        }
+                        Spacer()
+                    }
                 }
-                .toolbarBackground(.white, for: .tabBar)
-            MessageView()
-                .tabItem{
-                    Image(systemName: "message")
-                    Text("Messages")
-                }
-                .toolbarBackground(.white, for: .tabBar)
-            AccountView()
-                .tabItem{
-                    Image(systemName: "person")
-                    Text("Account")
-                }
-                .toolbarBackground(.white, for: .tabBar)
+            }
         }
     }
 }

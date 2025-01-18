@@ -8,13 +8,12 @@
 
 //MOCK TRIPLE FUNC
 func triple(input: [Posting]) -> [Posting] {
-    // Repeat the array, flatten it, and modify to include isDiscounted
     return Array(repeating: input, count: 3)
-        .flatMap { $0 } // Flatten the nested array into a single array
+        .flatMap { $0 }
         .enumerated()
         .map { index, posting in
             var modifiedPosting = posting
-            modifiedPosting.isDiscounted = posting.price < 180 // Alternate discounting
+            modifiedPosting.isDiscounted = posting.price < 180
             return modifiedPosting
         }
 }

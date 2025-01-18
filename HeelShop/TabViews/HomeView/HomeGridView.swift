@@ -20,7 +20,7 @@ struct HomeGridView: View {
                         SubHeading(title: "STOREFRONTS", showButton: true)
                         ScrollView(.horizontal, showsIndicators: false) {
                             LazyHGrid(rows: gridViewModel.single) {
-                                ForEach(MockBusinesses.businesses) { business in
+                                ForEach(gridViewModel.businesses) { business in
                                     Button {
                                         //TODO
                                     } label: {
@@ -46,10 +46,6 @@ struct HomeGridView: View {
                                             .padding(.top)
                                         PriceView(price: posting.price)
                                     }
-                                    .background(
-                                        RoundedRectangle(cornerRadius: 10)
-                                            .stroke(Color.blue, lineWidth: 2) // Add blue outline
-                                    )
                                 }
                             }
                         }
@@ -57,6 +53,7 @@ struct HomeGridView: View {
                     }
                     .padding(15)
                 }
+                .scrollIndicators(.hidden)
                 .onAppear() {
                     gridViewModel.getPostings()
                 }

@@ -19,6 +19,8 @@ final class AppGridViewModel: ObservableObject {
     let single: [GridItem] = [GridItem(.flexible())]
     
     @Published var postings: [Posting] = []
+    @Published var discounts: [Posting] = []
+    @Published var businesses: [Business] = MockBusinesses.businesses // TEMPORARY MOCK BUSINESSES
     @Published var alertItem: alertItem?
     @Published var isLoading = false
     
@@ -30,6 +32,9 @@ final class AppGridViewModel: ObservableObject {
                 switch result {
                 case.success(let postings):
                     self.postings = postings
+                    self.discounts = postings.filter { posting in
+                        return posting.isDiscounted == true
+                    }
                     
                 case.failure(let error):
                     switch error {

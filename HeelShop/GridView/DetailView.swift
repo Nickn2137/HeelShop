@@ -12,19 +12,31 @@ struct DetailView: View {
     let posting: Posting
     
     var body: some View {
-        VStack {
-            postingRemoteImage(urlString: posting.image)
-                .frame(width: 300, height: 300)
-                .aspectRatio(contentMode: .fill)
-                .cornerRadius(10)
-                .padding()
-            HStack{
+        ScrollView {
+            VStack {
+                postingRemoteImage(urlString: posting.image)
+                    .frame(width: 300, height: 300)
+                    .aspectRatio(contentMode: .fill)
+                    .cornerRadius(10)
+                    .padding()
+                Divider()
+                    .padding(.horizontal)
                 Text(posting.title)
-                Image(systemName: "heart")
+                    .padding()
+                
+                Divider()
+                    .padding(.horizontal)
+                Text(posting.description)
+                    .padding()
             }
-            .padding()
-            Text(posting.description)
-                .padding()
+        }
+        .padding(.top)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Image(systemName: "bag")
+                    .resizable()
+                    .frame(width: 35, height: 35)
+            }
         }
     }
 }
