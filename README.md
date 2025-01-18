@@ -24,7 +24,7 @@ Here are some notable features of my app. Additional features, such as the imple
 
 - **MVVM Design Pattern:** The app follows the Model-View-ViewModel (MVVM) design pattern, marking the first time I implemented this architecture in Swift. While the implementation might be a bit messy due to the learning process, it demonstrates a structured approach to app development.🪽
 - **Optimized Layouts with LazyGrids and Scroll Views:** Leveraged LazyGrids and Scroll Views throughout the app to ensure efficient loading and rendering of content, with pages populating dynamically as the user scrolls.
-- **API Implementation:** Integrated the "Fake Store" API and utilized tools like JSONDecoder() to populate product listings. The Discover page features a custom filter that dynamically showcases only discounted items in the corresponding section.
+- **API Implementation:** Integrated the "[Fake Store](https://fakestoreapi.com/docs)" API and utilized tools like JSONDecoder() to populate product listings. The Discover page features a custom filter that dynamically showcases only discounted items in the corresponding section.
 - **Data Handling:** Implemented network calls with comprehensive error handling, including user-friendly alerts for data issues. The app also includes a loading screen to handle image rendering, ensuring a smooth user experience during content loading.
 
 ## 🚀 Journey
