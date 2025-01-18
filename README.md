@@ -7,7 +7,9 @@ To access HeelShop, users must first create an account using a university email 
 - **Message View:** Where buyers and sellers can communicate with one another to facilitate transactions.
 - **Account Page:** Allows users to manage their account information, view and edit their listings, and promote their student-made businesses.
 
-Here's a video to showcase the app:
+**View the app below or [click here](https://youtube.com/shorts/njWk-H8MnAk):**
+
+![HeelShop](https://github.com/user-attachments/assets/a67a0342-d7a6-462e-aa07-45cf0648e61e)
 
 > **Disclaimer:** _This app is a work in progress. The video provided is not indicative of the final product, as features and functionality are subject to change during development._
 
