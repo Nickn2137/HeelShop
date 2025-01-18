@@ -26,44 +26,54 @@ Here are some notable features of my app. Additional features, such as the imple
 - **Data Handling:** Implemented network calls with comprehensive error handling, including user-friendly alerts for data issues. The app also includes a loading screen to handle image rendering, ensuring a smooth user experience during content loading.
 
 ## Journey
-The dropdowns below document my journey in developing HeelShop, highlighting features I've worked on, their status, and challenges I’ve encountered. This section reflects the progress I’ve made and the learning process behind each feature.
-
-**Legend:**
-- 🟢: Successfully implemented features
-- 🔴: Errors or challenges encountered
-- 🟠: Errors handled or solutions in progress
-
+The dropdowns below document my journey in developing HeelShop, showcasing features I've worked on, their current status, and the challenges I’ve encountered. This section highlights both my progress and the learning experiences behind each feature. Within the dropdowns, you'll find successes, errors encountered, and resolutions. Striked items are mostly completed.
 
 <details>
   <summary>TabViews</summary>
-  Successfully incorporated a TabView
+  
+  - 🟢 Successfully incorporated a TabView.
+  - 🔴 RESOLVED: I came across issues inegrating the API into my app as it didn't have all the required informaiton I needed for some functionalities. Because this wasn't my database, I couldn't just edit it. To solve this issue, I had to create functions to edit the database until it was what I wanted it to be. This feature was necessary for testing my app and it will not be included in the final version.
 </details>
 
 <details>
   <summary>HomeView</summary>
-  Successfully incorporated a scroll view
+  
+  - 🟢 Successfully incorporated "Lazy scrolling" for efficient content rendering.
+  - 🟢 "Products" section correctly populates the list based on API call.
+  - 🟢 Discounted postings are distinct from regular ones.
+  - 🔴 RESOLVED: I encountered an issue with invalid data errors while trying to populate the posting list from an API call, which stemmed from a mismatch between my data model and the structure of the API response. Initially, I assumed the response had a nested structure, but further debugging revealed it was a flat array. Adjusting my decoding approach to align with the actual API response resolved the issue. 
 </details>
 
 <details>
   <summary>DiscoverView</summary>
+
+  - 🟢 Successfully incorporated "Lazy scrolling" for efficient content rendering.
+  - 🟢 This view is visually where I want it to be at, however, adjustments to the model are necessary for this page to be functionally complete.
+  - 🔴 RESOLVED: Issues were encountered filtering the database. Problems resided in filtering the database as the expected filtered list returned nothing. To fix this, I moved all of this data to the ViewModel and created a separate variable to handle fetching the information.
 </details>
 
 <details>
   <summary>MessageView</summary>
+
+  - 🟢 Visually where I want it to be at. However, I still need to implement FireBase features for this view to work as I want it to.
+  - 🔴 RESOLVED: Issues were encountered creating the "Inbox" header. Originally, I had the text and the icon within an HStack but changed it so the bell icon is on its own separate stack. Both views were combined used an ZStack to formate the view how I wanted it to be. 
 </details>
 
 <details>
   <summary>AccountView</summary>
+  
+  - Not yet started.
 </details>
 
 <details>
   <summary>SearchView</summary>
+  
+  - 🟢 Successfully made a working search bar to fiter the list of postings.
+  - 🔴 Error occurred in the way in which SearchView is implemented. The idea is for a view to popup when users enter the search bar, but issues relating to formatting of the page arose. Further inspection and implementation of this view is necessary. As a result of this, this view is unusable for all the main views.
 </details>
 
 <details>
   <summary>BagView</summary>
-</details>
-
-<details>
-  <summary>BagView</summary>
+  
+  - Not yet started
 </details>
