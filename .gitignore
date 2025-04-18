@@ -10,5 +10,6 @@
 .build/
 DerivedData/
 
-
+# Secrets
+Keys.plist
 

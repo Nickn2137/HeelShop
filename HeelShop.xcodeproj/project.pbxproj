@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		2A4093592DB176D900320EEA /* Auth in Frameworks */ = {isa = PBXBuildFile; productRef = 2A4093582DB176D900320EEA /* Auth */; };
+		2A40935B2DB176D900320EEA /* PostgREST in Frameworks */ = {isa = PBXBuildFile; productRef = 2A40935A2DB176D900320EEA /* PostgREST */; };
+		2A40935D2DB176D900320EEA /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 2A40935C2DB176D900320EEA /* Supabase */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		2A7C08E02D2A161200B5C511 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +58,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A40935B2DB176D900320EEA /* PostgREST in Frameworks */,
+				2A4093592DB176D900320EEA /* Auth in Frameworks */,
+				2A40935D2DB176D900320EEA /* Supabase in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +121,9 @@
 			);
 			name = HeelShop;
 			packageProductDependencies = (
+				2A4093582DB176D900320EEA /* Auth */,
+				2A40935A2DB176D900320EEA /* PostgREST */,
+				2A40935C2DB176D900320EEA /* Supabase */,
 			);
 			productName = HeelShop;
 			productReference = 2A7C08CF2D2A160F00B5C511 /* HeelShop.app */;
@@ -195,6 +207,9 @@
 			);
 			mainGroup = 2A7C08C62D2A160F00B5C511;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				2A4093572DB176D900320EEA /* XCRemoteSwiftPackageReference "supabase-swift" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 2A7C08D02D2A160F00B5C511 /* Products */;
 			projectDirPath = "";
@@ -396,6 +411,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HeelShop/Preview Content\"";
+				DEVELOPMENT_TEAM = 5RP5P27646;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -424,6 +440,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HeelShop/Preview Content\"";
+				DEVELOPMENT_TEAM = 5RP5P27646;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -552,6 +569,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2A4093572DB176D900320EEA /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/supabase-community/supabase-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2A4093582DB176D900320EEA /* Auth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2A4093572DB176D900320EEA /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Auth;
+		};
+		2A40935A2DB176D900320EEA /* PostgREST */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2A4093572DB176D900320EEA /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = PostgREST;
+		};
+		2A40935C2DB176D900320EEA /* Supabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2A4093572DB176D900320EEA /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Supabase;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2A7C08C72D2A160F00B5C511 /* Project object */;
 }
