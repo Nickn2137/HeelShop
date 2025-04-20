@@ -52,7 +52,6 @@ struct HomeGridView: View {
                                     NavigationLink(value: posting) {
                                         VStack {
                                             ProductCell(posting: posting, width: 150, height: 150)
-                                                .padding(.top)
                                             PriceView(price: posting.price)
                                         }
                                     }

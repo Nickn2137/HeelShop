@@ -8,44 +8,35 @@
 import SwiftUI
 
 final class ImageLoader: ObservableObject {
-    @Published var image: Image? = nil
+    @Published var uiImage: UIImage? = nil
     
-    func load(FromURLString urlString: String) {
-        NetworkManager.shared.downloadImage(fromURLString: urlString) { uiImage in
-            guard let uiImage = uiImage else { return }
-            DispatchQueue.main.async { // async on main thread
-                self.image = Image(uiImage: uiImage)
+    func load(from urlString: String) {
+        NetworkManager.shared.downloadImage(fromURLString: urlString) { image in
+            DispatchQueue.main.async {
+                self.uiImage = image
             }
         }
     }
 }
 
-struct RemoteImage: View {
-    var image: Image?
-    
-    var body: some View {
-        image?
-            .resizable()
-            .scaledToFit()
-        ??  Image("error")
-            .resizable()
-            .scaledToFit()
-    }
-}
-
 struct postingRemoteImage: View {
-    @StateObject var imageLoader = ImageLoader()
+    @StateObject private var loader = ImageLoader()
     let urlString: String?
-    
+
     var body: some View {
-        if let urlString = urlString?.trimmingCharacters(in: .whitespacesAndNewlines),
-           !urlString.isEmpty {
-            RemoteImage(image: imageLoader.image)
-                .onAppear {
-                    imageLoader.load(FromURLString: urlString)
-                }
-        } else {
-            ItemPlaceholderImage()
+        Group {
+            if let uiImage = loader.uiImage {
+                Image(uiImage: uiImage)
+                    .resizable()
+            } else {
+                Image("imageplaceholder")
+                    .resizable()
+            }
+        }
+        .onAppear {
+            if let urlString = urlString {
+                loader.load(from: urlString)
+            }
         }
     }
 }

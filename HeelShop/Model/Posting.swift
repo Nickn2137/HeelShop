@@ -19,15 +19,25 @@ struct Posting: Hashable, Decodable, Identifiable {
 
 struct MockData {
     static let fakePosting = Posting(
-            id: "",
+        id: "",
+        title: "Fake Item",
+        description: "This item is not real.",
+        price: 4.21,
+        imageUrl: "",
+        userId: "0e0c2d08-737e-4efb-b45b-3dabf05a16cf",
+        isDiscounted: true
+    )
+    
+    static let postings: [Posting] = (0..<4).map { i in
+        Posting(
+            id: UUID().uuidString,
             title: "Fake Item",
             description: "This item is not real.",
             price: 4.21,
             imageUrl: "",
             userId: "0e0c2d08-737e-4efb-b45b-3dabf05a16cf",
-            isDiscounted: false
+            isDiscounted: true
         )
-        
-        static let postings = [fakePosting]
+    }
 }
 

@@ -13,7 +13,7 @@ struct AccountView: View {
     var body: some View {
         VStack {
             Button("Log Out") {
-                Task {
+                Task { 
                     do {
                         try await SupabaseManager.shared.client.auth.signOut()
                         isLoggedIn = false

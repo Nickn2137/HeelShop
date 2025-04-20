@@ -27,15 +27,5 @@ final class BusinessViewModel: ObservableObject {
     
     func fetchBusinesses() {
         // Placeholder for future API integration
-        // networkManager.shared.getBusinesses { result in
-        //     DispatchQueue.main.async {
-        //         switch result {
-        //         case .success(let businesses):
-        //             self.businesses = businesses
-        //         case .failure(let error):
-        //             print("Failed to fetch businesses: \(error)")
-        //         }
-        //     }
-        // }
     }
 }
