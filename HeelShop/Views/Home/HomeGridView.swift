@@ -1,5 +1,5 @@
 //
-//  AppGridView.swift
+//  HomeGridView.swift
 //  HeelShop
 //
 //  Created by Nicholas Nguyen on 1/5/25.
@@ -52,7 +52,14 @@ struct HomeGridView: View {
                                     NavigationLink(value: posting) {
                                         VStack {
                                             ProductCell(posting: posting, width: 150, height: 150)
-                                            PriceView(price: posting.price)
+                                            HStack {
+                                                Text("$\(posting.price ?? 0, specifier: "%.2f")")
+                                                    .foregroundColor(.black)
+                                                    .bold()
+                                                Spacer()
+                                                FavoriteView(posting: posting)
+                                            }
+                                            .padding(.horizontal, 20)
                                         }
                                     }
                                 }

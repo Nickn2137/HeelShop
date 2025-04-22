@@ -1,5 +1,5 @@
 //
-//  DiscoverViewModel.swift
+//  HomeViewModel.swift
 //  HeelShop
 //
 //  Created by Nicholas Nguyen on 4/13/25.
@@ -8,12 +8,12 @@
 import Foundation
 import SwiftUI
 
-final class DiscoverViewModel: ObservableObject {
+final class HomeViewModel: ObservableObject {
     let triple = GridLayouts.triple
     let double = GridLayouts.double
     let single = GridLayouts.single
     
-    let useMockData = true // TOGGLE SWITCH FOR MOCK DATA POSTINGS, FOR TESTING PURPOSES ONLY!!!!!
+    let useMockData = false // TOGGLE SWITCH FOR MOCK DATA POSTINGS, FOR TESTING PURPOSES ONLY!!!!!
 
     @Published var postings: [Posting] = []
     @Published var alertItem: alertItem?

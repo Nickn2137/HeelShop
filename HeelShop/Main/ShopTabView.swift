@@ -1,9 +1,11 @@
 import SwiftUI
 
 struct ShopTabView: View {
+    @State private var showCreateListing = false
+    
     init() {
         UITabBar.appearance().backgroundColor = UIColor.white
-        }
+    }
     
     var body: some View {
         VStack {
@@ -14,10 +16,15 @@ struct ShopTabView: View {
                             Image(systemName: "house")
                             Text("Home")
                         }
-                    DiscoverView()
-                        .tabItem {
-                            Image(systemName: "magnifyingglass")
-                            Text("Discover")
+                    //                    DiscoverView()
+                    //                        .tabItem {
+                    //                            Image(systemName: "magnifyingglass")
+                    //                            Text("Discover")
+                    //                        }
+                    CartListingView()
+                        .tabItem{
+                            Image(systemName: "bag")
+                            Text("Bag")
                         }
                     Spacer()
                     MessageView()
@@ -38,8 +45,7 @@ struct ShopTabView: View {
                     HStack {
                         Spacer()
                         Button(action: {
-                            // TODO
-                            print("Plus button tapped")
+                            showCreateListing = true
                         }) {
                             Image(systemName: "plus.circle.fill")
                                 .resizable()
@@ -54,6 +60,9 @@ struct ShopTabView: View {
                         Spacer()
                     }
                 }
+            }
+            .sheet(isPresented: $showCreateListing) {
+                CreateListingView()
             }
         }
     }
