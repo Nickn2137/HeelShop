@@ -17,12 +17,25 @@ class CreateListingViewModel: ObservableObject {
     @Published var description: String = ""
     @Published var price: String = ""
     @Published var image: UIImage?
+    @Published var isDiscounted: Bool = false
     @Published var selectedPhotoItem: PhotosPickerItem?
     
     // Submission status
     @Published var isSubmitting: Bool = false
     @Published var errorMessage: String?
     @Published var submissionComplete: Bool = false
+    
+    private var homeViewModel: HomeViewModel?
+    
+    init(homeViewModel: HomeViewModel? = nil) {
+        self.homeViewModel = homeViewModel
+    }
+    
+    private var accountViewModel: AccountViewModel?
+    
+    init(homeViewModel: HomeViewModel, accountViewModel: AccountViewModel? = nil) {
+            self.accountViewModel = accountViewModel
+        }
     
     func loadImageFromSelectedPhoto() async {
         guard let item = selectedPhotoItem else { return }
@@ -42,22 +55,22 @@ class CreateListingViewModel: ObservableObject {
             self.errorMessage = "Not logged in."
             return
         }
-
+        
         isSubmitting = true
         defer { isSubmitting = false }
-
+        
         var imageUrlString: String = ""
-
+        
         // Optional image upload
         if let imageData = image?.jpegData(compressionQuality: 0.8) {
             let filePath = UUID().uuidString + ".jpg"
             let storagePath = "listing-photos"
-
+            
             do {
                 try await SupabaseManager.shared.client.storage
                     .from(storagePath)
                     .upload(filePath, data: imageData, options: FileOptions(contentType: "image/jpeg"))
-
+                
                 if let url = try? SupabaseManager.shared.client.storage
                     .from(storagePath)
                     .getPublicURL(path: filePath) {
@@ -68,24 +81,26 @@ class CreateListingViewModel: ObservableObject {
                 return
             }
         }
-
+        
         let newPosting = NewPosting(
             title: title,
             description: description,
             price: Double(price) ?? 0.0,
             image_url: imageUrlString,
             user_id: user.id.uuidString,
-            is_discounted: false
+            is_discounted: isDiscounted
         )
-
+        
         do {
             try await SupabaseManager.shared.client
                 .from("listings")
                 .insert(newPosting)
                 .execute()
-
+            
             print("✅ Listing successfully saved.")
             self.submissionComplete = true
+            homeViewModel?.getPostings()
+            accountViewModel?.needsRefresh = true
         } catch {
             print("❌ Failed to insert listing:", error.localizedDescription)
             self.errorMessage = error.localizedDescription

@@ -60,7 +60,7 @@ struct DiscoverGridView: View {
                         //TODO "discoverGridViewModel.dummyPostings.filter { $0.isDiscounted == true }" SHOULD NOT BE IN FINAL
                         SeeAll(title: "DISCOUNTS & DEALS", showButton: true)
                         ScrollView(.horizontal, showsIndicators: false) {
-                            LazyHGrid(rows: discoverViewModel.triple) {
+                            LazyHGrid(rows: discoverViewModel.discountRows) {
                                 ForEach(discoverViewModel.discountedPostings) {posting in
                                     NavigationLink(value: posting) {
                                         ProductCell(posting: posting, width: 150, height: 150)

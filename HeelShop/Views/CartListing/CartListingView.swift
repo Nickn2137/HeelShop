@@ -30,7 +30,7 @@ struct CartListingView: View {
                         //MESSAGE LIST
                         if viewModel.cart.isEmpty {
                             Spacer()
-                            Text("Your cart is empty 😢")
+                            Text("Your cart is empty")
                                 .foregroundColor(.gray)
                                 .font(.subheadline)
                                 .padding()

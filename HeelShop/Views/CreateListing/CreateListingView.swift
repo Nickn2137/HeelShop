@@ -10,7 +10,22 @@ import PhotosUI
 
 struct CreateListingView: View {
     @Environment(\.dismiss) var dismiss
-    @StateObject private var viewModel = CreateListingViewModel()
+    
+    @ObservedObject var homeViewModel: HomeViewModel
+    @ObservedObject var accountViewModel: AccountViewModel
+    
+    @StateObject private var viewModel: CreateListingViewModel
+    
+    init(homeViewModel: HomeViewModel, accountViewModel: AccountViewModel? = nil) {
+        self.homeViewModel = homeViewModel
+        let resolvedAccountVM = accountViewModel ?? AccountViewModel()
+        self.accountViewModel = resolvedAccountVM
+        _viewModel = StateObject(wrappedValue: CreateListingViewModel(
+            homeViewModel: homeViewModel,
+            accountViewModel: resolvedAccountVM
+        ))
+    }
+    
     
     var body: some View {
         let image = viewModel.image
@@ -62,10 +77,19 @@ struct CreateListingView: View {
                         .textFieldStyle(.roundedBorder)
                         .keyboardType(.decimalPad)
                     
+                    // Discount
+                    Toggle("Is Discounted?", isOn: $viewModel.isDiscounted)
+                        .toggleStyle(SwitchToggleStyle(tint: .tarheel))
+                        .padding(.top)
+                    
                     // Submit Button
                     Button {
                         Task {
                             await viewModel.submitListing()
+                            if viewModel.submissionComplete {
+                                homeViewModel.getPostings()
+                                dismiss()
+                            }
                         }
                     } label: {
                         Text("Create Listing")
@@ -88,14 +112,9 @@ struct CreateListingView: View {
             }
             .navigationTitle("New Listing")
         }
-        .onChange(of: viewModel.submissionComplete) {
-            if viewModel.submissionComplete {
-                dismiss()
-            }
-        }
     }
 }
 
 #Preview {
-    CreateListingView()
+    CreateListingView(homeViewModel: HomeViewModel())
 }

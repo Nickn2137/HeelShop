@@ -13,6 +13,13 @@ final class DiscoverViewModel: ObservableObject {
     let double = GridLayouts.double
     let single = GridLayouts.single
     
+    // TEMP FIX
+    let discountRows = [
+        GridItem(.fixed(160)),
+        GridItem(.fixed(160)),
+        GridItem(.fixed(160))
+    ]
+    
     let useMockData = false // TOGGLE SWITCH FOR MOCK DATA POSTINGS, FOR TESTING PURPOSES ONLY!!!!!
 
     @Published var postings: [Posting] = []

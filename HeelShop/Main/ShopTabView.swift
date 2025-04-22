@@ -2,6 +2,8 @@ import SwiftUI
 
 struct ShopTabView: View {
     @State private var showCreateListing = false
+    @StateObject var homeViewModel = HomeViewModel()
+    @StateObject var accountViewModel = AccountViewModel()
     
     init() {
         UITabBar.appearance().backgroundColor = UIColor.white
@@ -11,20 +13,15 @@ struct ShopTabView: View {
         VStack {
             ZStack {
                 TabView {
-                    Homeview()
+                    Homeview(homeViewModel: homeViewModel)
                         .tabItem {
                             Image(systemName: "house")
                             Text("Home")
                         }
-                    //                    DiscoverView()
-                    //                        .tabItem {
-                    //                            Image(systemName: "magnifyingglass")
-                    //                            Text("Discover")
-                    //                        }
-                    CartListingView()
-                        .tabItem{
-                            Image(systemName: "bag")
-                            Text("Bag")
+                    DiscoverView()
+                        .tabItem {
+                            Image(systemName: "magnifyingglass")
+                            Text("Discover")
                         }
                     Spacer()
                     MessageView()
@@ -32,7 +29,7 @@ struct ShopTabView: View {
                             Image(systemName: "message")
                             Text("Messages")
                         }
-                    AccountView()
+                    AccountView(viewModel: accountViewModel)
                         .tabItem {
                             Image(systemName: "person")
                             Text("Account")
@@ -62,7 +59,7 @@ struct ShopTabView: View {
                 }
             }
             .sheet(isPresented: $showCreateListing) {
-                CreateListingView()
+                CreateListingView(homeViewModel: homeViewModel, accountViewModel: accountViewModel)
             }
         }
     }

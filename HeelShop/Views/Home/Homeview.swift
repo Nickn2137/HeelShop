@@ -8,15 +8,18 @@
 import SwiftUI
 
 struct Homeview: View {
+    @ObservedObject var homeViewModel: HomeViewModel
     
     var body: some View {
         NavigationStack{
-            Search()
-            HomeGridView()
+            VStack {
+                Search()
+                HomeGridView(homeViewModel: homeViewModel)
+            }
         }
     }
 }
 
 #Preview {
-    Homeview()
+    Homeview(homeViewModel: HomeViewModel())
 }

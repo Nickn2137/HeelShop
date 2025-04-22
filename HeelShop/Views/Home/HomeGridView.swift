@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeGridView: View {
     
-    @StateObject var homeViewModel = HomeViewModel()
+    @ObservedObject var homeViewModel: HomeViewModel
     @StateObject var businessViewModel = BusinessViewModel()
     
     var body: some View {
@@ -87,5 +87,5 @@ struct HomeGridView: View {
 }
 
 #Preview {
-    HomeGridView()
+    HomeGridView(homeViewModel: HomeViewModel())
 }

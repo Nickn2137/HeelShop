@@ -1,30 +1,30 @@
 //
-//  PostingListView.swift
+//  AccountListView.swift
 //  HeelShop
 //
-//  Created by Nicholas Nguyen on 4/21/25.
+//  Created by Nicholas Nguyen on 4/22/25.
 //
 
 import SwiftUI
 
-struct PostingListView: View {
+struct AccountListView: View {
     let posting: Posting
-    var onUnlike: (() -> Void)? = nil
+    var onDelete: (() -> Void)? = nil
     
-    init(posting: Posting, onUnlike: (() -> Void)? = nil) {
+    init(posting: Posting, onDelete: (() -> Void)? = nil) {
         self.posting = posting
-        self.onUnlike = onUnlike
+        self.onDelete = onDelete
     }
 
     var body: some View {
-        HStack{
+        HStack {
             postingRemoteImage(urlString: posting.imageUrl)
                 .scaledToFill()
                 .frame(width: 100, height: 100)
                 .clipped()
                 .cornerRadius(10)
 
-            VStack {
+            VStack(alignment: .leading) {
                 Text(posting.title)
                     .font(.headline)
                     .lineLimit(1)
@@ -38,11 +38,18 @@ struct PostingListView: View {
 
             Spacer()
 
-            FavoriteView(posting: posting, onUnlike: onUnlike)
+            Button(role: .destructive) {
+                onDelete?()
+            } label: {
+                Image(systemName: "trash")
+                    .foregroundColor(.red)
+                    .padding(.leading, 10)
+            }
         }
     }
 }
 
 #Preview {
-    PostingListView(posting: MockData.fakePosting)
+    AccountListView(posting: MockData.fakePosting)
 }
+

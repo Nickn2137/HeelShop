@@ -9,20 +9,30 @@ import SwiftUI
 
 
 struct Search: View {
+    @State private var showCart = false
+    
     var body: some View {
-            HStack{
-                Rectangle()
-                    .fill(Color("empty"))
-                    .frame(width: 300, height: 35)
-                    .cornerRadius(10)
-                Spacer()
-                
+        HStack{
+            Rectangle()
+                .fill(Color("empty"))
+                .frame(width: 300, height: 35)
+                .cornerRadius(10)
+            Spacer()
+            
+            Button {
+                showCart = true
+            } label: {
                 Image(systemName: "bag")
                     .resizable()
                     .frame(width: 35, height: 35)
-                
+                    .foregroundColor(.black)
             }
-            .padding(15)
+            
+        }
+        .padding(15)
+        .sheet(isPresented: $showCart) {
+            CartListingView()
+        }
     }
 }
 
