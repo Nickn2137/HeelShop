@@ -37,17 +37,26 @@ struct HomeGridView: View {
                         
                         // Trending Products Section
                         SeeAll(title: "TRENDING PRODUCTS", showButton: true)
-                        LazyVGrid(columns: homeViewModel.double) {
-                            
-                            // !!! TEMPORARY "dummyPostings" VARIABLE !!!
-                            
-                            if homeViewModel.postings.isEmpty {
-                                Text("No Postings")
-                                    .font(.subheadline)
-                                    .foregroundColor(.gray)
-                                    .padding(.top, 40)
+                        
+                        
+                        // !!! TEMPORARY "dummyPostings" VARIABLE !!!
+                        
+                        if homeViewModel.postings.isEmpty {
+                            VStack {
+                                Image(.emptyimage)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 300, height: 300)
+                                    .opacity(0.80)
+                                Text("No current listings")
+                                    .font(.title)
+                                    .foregroundColor(.black)
                                     .frame(maxWidth: .infinity, alignment: .center)
-                            } else {
+                                    .opacity(0.80)
+                            }
+                            .padding()
+                        } else {
+                            LazyVGrid(columns: homeViewModel.double) {
                                 ForEach(homeViewModel.postings) { posting in
                                     NavigationLink(value: posting) {
                                         VStack {
@@ -64,8 +73,8 @@ struct HomeGridView: View {
                                     }
                                 }
                             }
+                            .navigationDestination(for: Posting.self) { posting in DetailView(posting: posting)}
                         }
-                        .navigationDestination(for: Posting.self) { posting in DetailView(posting: posting)}
                     }
                     .padding(15)
                 }
