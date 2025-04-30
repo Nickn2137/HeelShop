@@ -11,7 +11,7 @@ struct ProductCell: View {
     let posting: Posting
     let width: CGFloat
     let height: CGFloat
-    
+
     var body: some View {
         postingRemoteImage(urlString: posting.imageUrl)
             .scaledToFill()

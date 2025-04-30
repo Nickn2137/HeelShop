@@ -1,5 +1,5 @@
 //
-//  Discoverview.swift
+//  DiscoverView.swift
 //  HeelShop
 //
 //  Created by Nicholas Nguyen on 1/4/25.

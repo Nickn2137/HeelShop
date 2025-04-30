@@ -13,7 +13,7 @@ struct InputView: View {
     let placeholder: String
     var isSecureField = false
     var trailingIcon: Bool? = nil
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             if let title = title, !title.isEmpty {

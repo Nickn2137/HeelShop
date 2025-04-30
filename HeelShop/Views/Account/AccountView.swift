@@ -10,12 +10,12 @@ import SwiftUI
 struct AccountView: View {
     @AppStorage("isLoggedIn") private var isLoggedIn = false
     @ObservedObject var viewModel: AccountViewModel
-    
+
     var body: some View {
         NavigationStack {
             VStack {
                 ProfileImageView(urlString: viewModel.profileImageUrl, size: 100)
-                
+
                 if viewModel.isLoading {
                     LoadingView()
                 } else {
@@ -33,7 +33,7 @@ struct AccountView: View {
                     }
                     .frame(height: 40)
                     .overlay(Divider(), alignment: .bottom)
-                    
+
                     if viewModel.userPostings.isEmpty {
                         Spacer()
                         Text("You haven't posted any listings.")

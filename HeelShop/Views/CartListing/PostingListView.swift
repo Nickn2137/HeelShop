@@ -10,7 +10,7 @@ import SwiftUI
 struct PostingListView: View {
     let posting: Posting
     var onUnlike: (() -> Void)? = nil
-    
+
     init(posting: Posting, onUnlike: (() -> Void)? = nil) {
         self.posting = posting
         self.onUnlike = onUnlike

@@ -14,28 +14,28 @@ struct RegistrationView: View {
     @State private var confirmpassword = ""
     @StateObject private var viewModel = RegistrationViewModel()
     @Environment(\.dismiss) var dismiss
-    
+
     private var passwordsMatch: Bool? {
         if confirmpassword.isEmpty { return nil }
         return password == confirmpassword
     }
-    
+
     private var isFormValid: Bool {
         !email.trimmingCharacters(in: .whitespaces).isEmpty &&
             !username.trimmingCharacters(in: .whitespaces).isEmpty &&
             !password.trimmingCharacters(in: .whitespaces).isEmpty &&
             password == confirmpassword
     }
-    
+
     var body: some View {
         VStack(spacing: 20) {
             Spacer()
-            
+
             // Logo
             Text("HeelShop")
                 .font(.system(size: 75, weight: .bold, design: .rounded))
                 .foregroundStyle(.white)
-            
+
             // Input fields
             InputView(text: $email, title: "Email", placeholder: "name@example.com")
                 .autocapitalization(.none)
@@ -56,7 +56,7 @@ struct RegistrationView: View {
                 trailingIcon: passwordsMatch
             )
             .autocapitalization(.none)
-            
+
             // Sign up button
             Button {
                 Task {
@@ -77,7 +77,7 @@ struct RegistrationView: View {
             .disabled(!isFormValid)
             .cornerRadius(10)
             .padding(.top, 24)
-            
+
             if let error = viewModel.errorMessage {
                 Text("\(error)")
                     .foregroundColor(.red)
@@ -85,9 +85,9 @@ struct RegistrationView: View {
                     .multilineTextAlignment(.center)
                     .padding(.horizontal)
             }
-            
+
             Spacer()
-            
+
             Button {
                 dismiss()
             } label: {

@@ -16,10 +16,10 @@ struct MessageView: View {
                         .font(.title2)
                         .bold()
                         .frame(maxWidth: .infinity, alignment: .center)
-                    
+
                     HStack {
                         Spacer()
-                        
+
                         Image(systemName: "bell")
                             .resizable()
                             .frame(width: 25, height: 25)
@@ -28,11 +28,11 @@ struct MessageView: View {
                 }
                 .frame(height: 40)
                 .overlay(Divider(), alignment: .bottom)
-                
+
                 // MESSAGE LIST
-                
+
                 List {
-                    ForEach(0 ... 10, id: \.self) { message in
+                    ForEach(0 ... 10, id: \.self) { _ in
                         InboxRowView()
                             .listRowSeparator(.hidden)
                     }

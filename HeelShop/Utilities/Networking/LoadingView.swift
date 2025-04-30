@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct ActivityIndicator: UIViewRepresentable {
-    func makeUIView(context: Context) -> UIActivityIndicatorView {
+    func makeUIView(context _: Context) -> UIActivityIndicatorView {
         let activityIndicatorView = UIActivityIndicatorView(style: .large)
         activityIndicatorView.color = UIColor(named: "tarheel")
         activityIndicatorView.startAnimating()
         return activityIndicatorView
     }
 
-    func updateUIView(_ uiView: UIActivityIndicatorView, context: Context) {}
+    func updateUIView(_: UIActivityIndicatorView, context _: Context) {}
 }
 
 struct LoadingView: View {
@@ -23,7 +23,7 @@ struct LoadingView: View {
         ZStack {
             Color(.systemBackground)
                 .edgesIgnoringSafeArea(.all)
-            
+
             ActivityIndicator()
         }
     }

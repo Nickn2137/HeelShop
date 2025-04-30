@@ -27,8 +27,8 @@ enum MockData {
         userId: "0e0c2d08-737e-4efb-b45b-3dabf05a16cf",
         isDiscounted: true
     )
-    
-    static let postings: [Posting] = (0 ..< 4).map { i in
+
+    static let postings: [Posting] = (0 ..< 4).map { _ in
         Posting(
             id: UUID().uuidString,
             title: "Fake Item",

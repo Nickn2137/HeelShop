@@ -11,7 +11,7 @@ import SwiftUI
 
 final class BusinessViewModel: ObservableObject {
     @Published var businesses: [Business] = []
-    
+
     init(useMock: Bool = true) {
         if useMock {
             loadMockBusinesses()
@@ -19,11 +19,11 @@ final class BusinessViewModel: ObservableObject {
             fetchBusinesses()
         }
     }
-    
+
     private func loadMockBusinesses() {
         businesses = MockBusinesses.businesses
     }
-    
+
     func fetchBusinesses() {
         // Placeholder for future API integration
     }

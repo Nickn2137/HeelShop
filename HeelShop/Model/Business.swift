@@ -13,7 +13,7 @@ struct Business: Hashable, Identifiable {
 
 enum MockBusinesses {
     static let samepleBusiness = Business()
-    
+
     static let businesses = [
         Business(),
         Business(),

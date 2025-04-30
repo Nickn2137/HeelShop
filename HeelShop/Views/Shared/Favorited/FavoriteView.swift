@@ -10,15 +10,15 @@ import SwiftUI
 struct FavoriteView: View {
     let posting: Posting
     var onUnlike: (() -> Void)? = nil
-    
+
     @StateObject private var viewModel: FavoriteViewModel
-    
+
     init(posting: Posting, onUnlike: (() -> Void)? = nil) {
         self.posting = posting
         self.onUnlike = onUnlike
         _viewModel = StateObject(wrappedValue: FavoriteViewModel(posting: posting))
     }
-    
+
     var body: some View {
         Image(systemName: viewModel.isFavorited ? "heart.fill" : "heart")
             .font(.system(size: 25))

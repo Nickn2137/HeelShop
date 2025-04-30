@@ -9,30 +9,30 @@ import SwiftUI
 import WidgetKit
 
 struct Provider: TimelineProvider {
-    func placeholder(in context: Context) -> SimpleEntry {
+    func placeholder(in _: Context) -> SimpleEntry {
         SimpleEntry(date: Date(), savedCount: 0)
     }
-    
-    func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> Void) {
+
+    func getSnapshot(in _: Context, completion: @escaping (SimpleEntry) -> Void) {
         let sharedDefaults = UserDefaults(suiteName: "group.com.nicknguyen.heelshop")
         let cartItemCount = sharedDefaults?.integer(forKey: "cartItemCount") ?? 0
         let entry = SimpleEntry(date: Date(), savedCount: cartItemCount)
         completion(entry)
     }
-    
-    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> Void) {
+
+    func getTimeline(in _: Context, completion: @escaping (Timeline<Entry>) -> Void) {
         var entries: [SimpleEntry] = []
-        
+
         let sharedDefaults = UserDefaults(suiteName: "group.com.nicknguyen.heelshop")
         let cartItemCount = sharedDefaults?.integer(forKey: "cartItemCount") ?? 0
-        
+
         let currentDate = Date()
         for hourOffset in 0 ..< 5 {
             let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
             let entry = SimpleEntry(date: entryDate, savedCount: cartItemCount)
             entries.append(entry)
         }
-        
+
         let timeline = Timeline(entries: entries, policy: .atEnd)
         completion(timeline)
     }
@@ -45,7 +45,7 @@ struct SimpleEntry: TimelineEntry {
 
 struct HeelShopWidgetEntryView: View {
     var entry: Provider.Entry
-    
+
     var body: some View {
         VStack {
             if entry.savedCount == 0 {
@@ -68,7 +68,7 @@ struct HeelShopWidgetEntryView: View {
 
 struct HeelShopWidget: Widget {
     let kind: String = "HeelShopWidget"
-    
+
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             if #available(iOS 17.0, *) {

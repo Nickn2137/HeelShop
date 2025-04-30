@@ -10,15 +10,15 @@ import SwiftUI
 
 struct CreateListingView: View {
     @Environment(\.dismiss) var dismiss
-    
+
     @ObservedObject var homeViewModel: HomeViewModel
     @ObservedObject var accountViewModel: AccountViewModel
-    
+
     @StateObject private var viewModel: CreateListingViewModel
     @State private var showPhotoSourceChoice = false
     @State private var showCamera = false
     @State private var isPhotosPickerPresented = false
-    
+
     init(homeViewModel: HomeViewModel, accountViewModel: AccountViewModel? = nil) {
         self.homeViewModel = homeViewModel
         let resolvedAccountVM = accountViewModel ?? AccountViewModel()
@@ -28,7 +28,7 @@ struct CreateListingView: View {
             accountViewModel: resolvedAccountVM
         ))
     }
-    
+
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -69,25 +69,25 @@ struct CreateListingView: View {
                         }
                         Button("Cancel", role: .cancel) {}
                     }
-                    
+
                     // Title
                     TextField("Title", text: $viewModel.title)
                         .textFieldStyle(.roundedBorder)
-                    
+
                     // Description
                     TextField("Description", text: $viewModel.description, axis: .vertical)
                         .textFieldStyle(.roundedBorder)
-                    
+
                     // Price
                     TextField("Price", text: $viewModel.price)
                         .textFieldStyle(.roundedBorder)
                         .keyboardType(.decimalPad)
-                    
+
                     // Discount
                     Toggle("Is Discounted?", isOn: $viewModel.isDiscounted)
                         .toggleStyle(SwitchToggleStyle(tint: .tarheel))
                         .padding(.top)
-                    
+
                     // Submit Button
                     Button {
                         Task {
@@ -106,7 +106,7 @@ struct CreateListingView: View {
                             .cornerRadius(10)
                     }
                     .padding(.top)
-                    
+
                     // Cancel
                     Button("Cancel", role: .cancel) {
                         dismiss()

@@ -11,7 +11,7 @@ struct HomeGridView: View {
     @ObservedObject var homeViewModel: HomeViewModel
     @StateObject var businessViewModel = BusinessViewModel()
     @Environment(\.colorScheme) var colorScheme
-    
+
     var body: some View {
         NavigationStack {
             ZStack {
@@ -21,7 +21,7 @@ struct HomeGridView: View {
                         SeeAll(title: "STOREFRONTS", showButton: true)
                         ScrollView(.horizontal, showsIndicators: false) {
                             LazyHGrid(rows: homeViewModel.single) {
-                                ForEach(businessViewModel.businesses) { business in
+                                ForEach(businessViewModel.businesses) { _ in
                                     Button {
                                         // TODO: Business detail view
                                     } label: {
@@ -34,12 +34,12 @@ struct HomeGridView: View {
                                 }
                             }
                         }
-                        
+
                         // Trending Products Section
                         SeeAll(title: "TRENDING PRODUCTS", showButton: true)
-                        
+
                         // !!! TEMPORARY "dummyPostings" VARIABLE !!!
-                        
+
                         if homeViewModel.postings.isEmpty {
                             VStack {
                                 Image(colorScheme == .dark ? .inverted : .emptyimage)

@@ -4,11 +4,11 @@ struct ShopTabView: View {
     @State private var showCreateListing = false
     @StateObject var homeViewModel = HomeViewModel()
     @StateObject var accountViewModel = AccountViewModel()
-    
+
     init() {
         UITabBar.appearance().backgroundColor = UIColor.white
     }
-    
+
     var body: some View {
         VStack {
             ZStack {

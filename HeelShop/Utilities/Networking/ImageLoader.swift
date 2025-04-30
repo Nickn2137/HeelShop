@@ -1,5 +1,5 @@
 //
-//  imageLoader.swift
+//  ImageLoader.swift
 //  HeelShop
 //
 //  Created by Nicholas Nguyen on 1/14/25.
@@ -9,7 +9,7 @@ import SwiftUI
 
 final class ImageLoader: ObservableObject {
     @Published var uiImage: UIImage? = nil
-    
+
     func load(from urlString: String) {
         NetworkManager.shared.downloadImage(fromURLString: urlString) { image in
             DispatchQueue.main.async {

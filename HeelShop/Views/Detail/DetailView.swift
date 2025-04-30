@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DetailView: View {
     let posting: Posting
-    
+
     var body: some View {
         ScrollView {
             VStack {
@@ -22,7 +22,7 @@ struct DetailView: View {
                     .padding(.horizontal)
                 Text(posting.title)
                     .padding()
-                
+
                 Divider()
                     .padding(.horizontal)
                 Text(posting.description ?? "No description available.")

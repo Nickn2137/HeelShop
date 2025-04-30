@@ -15,7 +15,7 @@ class AuthViewModel: ObservableObject {
     @Published var password: String = ""
     @Published var errorMessage: String?
     @AppStorage("isLoggedIn") private var isLoggedIn = false
-    
+
     func login() async {
         do {
             let user = try await SupabaseManager.shared.login(email: email, password: password)
@@ -25,7 +25,7 @@ class AuthViewModel: ObservableObject {
             errorMessage = error.localizedDescription
         }
     }
-    
+
     func logout() async {
         do {
             try await SupabaseManager.shared.logout()

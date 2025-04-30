@@ -10,7 +10,7 @@ func tripleArray(input: [Posting]) -> [Posting] {
     return Array(repeating: input, count: 3)
         .flatMap { $0 }
         .enumerated()
-        .map { index, posting in
+        .map { _, posting in
             var modifiedPosting = posting
             if let price = posting.price {
                 modifiedPosting.isDiscounted = price < 180

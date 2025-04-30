@@ -18,7 +18,7 @@ struct ProfileImageView: View {
                     switch phase {
                     case .empty:
                         ProgressView()
-                    case .success(let image):
+                    case let .success(image):
                         imageStyle(image)
                     default:
                         fallbackImage

@@ -8,7 +8,7 @@ struct InboxRowView: View {
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 64, height: 64)
                 .clipShape(Circle())
-            
+
             VStack(alignment: .leading, spacing: 4) {
                 Text("JustaChillGuy52")
                     .font(.subheadline)
@@ -19,9 +19,9 @@ struct InboxRowView: View {
                     .lineLimit(2)
                     .frame(maxWidth: UIScreen.main.bounds.width - 160, alignment: .leading)
             }
-            
+
             Spacer()
-            
+
             VStack(alignment: .trailing, spacing: 2) {
                 Text("Today")
                     .font(.caption)
@@ -32,7 +32,7 @@ struct InboxRowView: View {
             }
         }
         .frame(height: 72)
-        
+
         HStack(alignment: .top, spacing: 12) {
             Image("plant")
                 .resizable()
@@ -61,7 +61,7 @@ struct InboxRowView: View {
                     .lineLimit(2)
                     .frame(maxWidth: UIScreen.main.bounds.width - 100, alignment: .leading)
             }
-            
+
             VStack(alignment: .trailing, spacing: 2) {
                 Text("Friday")
                     .font(.caption)

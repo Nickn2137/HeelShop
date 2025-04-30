@@ -10,7 +10,7 @@ import SwiftUI
 struct AccountListView: View {
     let posting: Posting
     var onDelete: (() -> Void)? = nil
-    
+
     init(posting: Posting, onDelete: (() -> Void)? = nil) {
         self.posting = posting
         self.onDelete = onDelete

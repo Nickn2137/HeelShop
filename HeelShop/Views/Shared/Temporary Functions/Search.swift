@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  Search.swift
 //  HeelShop
 //
 //  Created by Nicholas Nguyen on 1/5/25.
@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Search: View {
     @State private var showCart = false
-    
+
     var body: some View {
         HStack {
             Rectangle()
@@ -17,7 +17,7 @@ struct Search: View {
                 .frame(width: 300, height: 35)
                 .cornerRadius(10)
             Spacer()
-            
+
             Button {
                 showCart = true
             } label: {

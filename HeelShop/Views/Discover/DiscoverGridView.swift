@@ -1,5 +1,5 @@
 //
-//  DiscoverGridViewModel.swift
+//  DiscoverGridView.swift
 //  HeelShop
 //
 //  Created by Nicholas Nguyen on 1/5/25.
@@ -10,7 +10,7 @@ import SwiftUI
 struct DiscoverGridView: View {
     @StateObject var discoverViewModel = DiscoverViewModel()
     @StateObject var businessViewModel = BusinessViewModel()
-    
+
     var body: some View {
         ZStack {
             NavigationStack {
@@ -20,7 +20,7 @@ struct DiscoverGridView: View {
                         SeeAll(title: "TRENDING SHOPS", showButton: true)
                         ScrollView(.horizontal, showsIndicators: false) {
                             LazyHGrid(rows: discoverViewModel.single) {
-                                ForEach(businessViewModel.businesses) { business in
+                                ForEach(businessViewModel.businesses) { _ in
                                     Button {
                                         // TODO:
                                     } label: {
@@ -33,7 +33,7 @@ struct DiscoverGridView: View {
                                 }
                             }
                         }
-                        
+
                         // CATEGORIES: Room Essentials, Clothing, Items, Utilities ?
                         // TODO, use a database, another API, or filter one out?
                         SeeAll(title: "SHOP BY CATEGORY", showButton: false)
@@ -43,7 +43,7 @@ struct DiscoverGridView: View {
                             CategoryButton(image: "bike", text: "Utilities")
                             CategoryButton(image: "house", text: "Others")
                         }
-                        
+
                         // EXPLORE: Display reviews ?
                         // TODO, use a database, another API, or filter one out?
                         SeeAll(title: "EXPLORE", showButton: true)
@@ -54,7 +54,7 @@ struct DiscoverGridView: View {
                                 }
                             }
                         }
-                        
+
                         // DISCOUNTS
                         // TODO: "discoverGridViewModel.dummyPostings.filter { $0.isDiscounted == true }" SHOULD NOT BE IN FINAL
                         SeeAll(title: "DISCOUNTS & DEALS", showButton: true)

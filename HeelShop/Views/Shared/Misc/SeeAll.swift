@@ -1,5 +1,5 @@
 //
-//  SubHeading.swift
+//  SeeAll.swift
 //  HeelShop
 //
 //  Created by Nicholas Nguyen on 1/5/25.
@@ -11,16 +11,16 @@ import SwiftUICore
 struct SeeAll: View {
     var title: String
     let showButton: Bool
-    
+
     var body: some View {
         HStack {
             Text(title)
                 .font(.system(size: 25))
                 .fontDesign(.rounded)
                 .multilineTextAlignment(.leading)
-            
+
             Spacer()
-            
+
             if showButton {
                 Button(action: {
                     // Action for See All

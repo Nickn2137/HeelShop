@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CartListingView: View {
     @StateObject private var viewModel = CartViewModel()
-    
+
     var body: some View {
         NavigationStack {
             VStack {
@@ -26,7 +26,7 @@ struct CartListingView: View {
                         }
                         .frame(height: 40)
                         .overlay(Divider(), alignment: .bottom)
-                        
+
                         // MESSAGE LIST
                         if viewModel.cart.isEmpty {
                             Spacer()

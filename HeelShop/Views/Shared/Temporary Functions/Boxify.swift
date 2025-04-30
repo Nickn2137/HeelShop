@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Boxify: View {
     var isHorizontal: Bool
-    
+
     var body: some View {
         Rectangle()
             .fill(Color("empty"))

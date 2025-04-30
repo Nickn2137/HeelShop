@@ -10,7 +10,7 @@ import SwiftUI
 struct CategoryButton: View {
     let image: String
     let text: String
-    
+
     var body: some View {
         Button {
             // TODO:

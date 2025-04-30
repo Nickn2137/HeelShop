@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Homeview: View {
     @ObservedObject var homeViewModel: HomeViewModel
-    
+
     var body: some View {
         NavigationStack {
             VStack {
