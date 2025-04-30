@@ -7,6 +7,7 @@
 
 import Foundation
 import Supabase
+import WidgetKit
 
 @MainActor
 class CartViewModel: ObservableObject {
@@ -29,17 +30,22 @@ class CartViewModel: ObservableObject {
                 .select("id, listings(*)")
                 .eq("user_id", value: userId)
                 .execute()
-
+            
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
-
+            
             let data = try decoder.decode([CartListing].self, from: response.data)
-    
-            self.cart = data.map { $0.listings }
+            
+            cart = data.map { $0.listings }
+            
+            if let sharedDefaults = UserDefaults(suiteName: "group.com.nicknguyen.heelshop") {
+                sharedDefaults.set(cart.count, forKey: "cartItemCount")
+            }
+            
+            WidgetCenter.shared.reloadAllTimelines()
         } catch {
-            self.errorMessage = error.localizedDescription
-            print("❌ Failed to fetch favorites:", error.localizedDescription)
+            errorMessage = error.localizedDescription
+            print("Failed to fetch favorites:", error.localizedDescription)
         }
     }
-    
 }

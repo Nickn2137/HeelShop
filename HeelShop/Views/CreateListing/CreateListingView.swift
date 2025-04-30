@@ -5,8 +5,8 @@
 //  Created by Nicholas Nguyen on 4/22/25.
 //
 
-import SwiftUI
 import PhotosUI
+import SwiftUI
 
 struct CreateListingView: View {
     @Environment(\.dismiss) var dismiss
@@ -15,6 +15,9 @@ struct CreateListingView: View {
     @ObservedObject var accountViewModel: AccountViewModel
     
     @StateObject private var viewModel: CreateListingViewModel
+    @State private var showPhotoSourceChoice = false
+    @State private var showCamera = false
+    @State private var isPhotosPickerPresented = false
     
     init(homeViewModel: HomeViewModel, accountViewModel: AccountViewModel? = nil) {
         self.homeViewModel = homeViewModel
@@ -26,44 +29,47 @@ struct CreateListingView: View {
         ))
     }
     
-    
     var body: some View {
-        let image = viewModel.image
-        
         NavigationStack {
             ScrollView {
                 VStack(spacing: 20) {
-                    
-                    // Image Picker
-                    PhotosPicker(selection: $viewModel.selectedPhotoItem, matching: .images, photoLibrary: .shared()) {
-                        ZStack {
-                            if let image = image {
-                                Image(uiImage: image)
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(height: 200)
-                                    .clipped()
-                                    .cornerRadius(10)
-                            } else {
-                                VStack {
-                                    Image(systemName: "photo")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 100, height: 100)
-                                        .foregroundColor(.gray)
-                                    Text("Tap to choose a photo")
-                                        .foregroundColor(.gray)
-                                }
+                    ZStack {
+                        if let image = viewModel.image {
+                            Image(uiImage: image)
+                                .resizable()
+                                .scaledToFill()
                                 .frame(height: 200)
-                                .frame(maxWidth: .infinity)
-                                .background(Color(.systemGray6))
+                                .clipped()
                                 .cornerRadius(10)
+                        } else {
+                            VStack {
+                                Image(systemName: "photo")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 100, height: 100)
+                                    .foregroundColor(.gray)
+                                Text("Tap to choose a photo")
+                                    .foregroundColor(.gray)
                             }
+                            .frame(height: 200)
+                            .frame(maxWidth: .infinity)
+                            .background(Color(.systemGray6))
+                            .cornerRadius(10)
                         }
                     }
-                    .task(id: viewModel.selectedPhotoItem) {
-                        await viewModel.loadImageFromSelectedPhoto()
+                    .onTapGesture {
+                        showPhotoSourceChoice = true
                     }
+                    .confirmationDialog("Choose Photo Source", isPresented: $showPhotoSourceChoice) {
+                        Button("Take a Photo") {
+                            showCamera = true
+                        }
+                        Button("Choose from Library") {
+                            isPhotosPickerPresented = true
+                        }
+                        Button("Cancel", role: .cancel) {}
+                    }
+                    
                     // Title
                     TextField("Title", text: $viewModel.title)
                         .textFieldStyle(.roundedBorder)
@@ -111,6 +117,13 @@ struct CreateListingView: View {
                 .padding()
             }
             .navigationTitle("New Listing")
+            .sheet(isPresented: $showCamera) {
+                CameraView(image: $viewModel.image)
+            }
+            .photosPicker(isPresented: $isPhotosPickerPresented, selection: $viewModel.selectedPhotoItem, matching: .images)
+            .task(id: viewModel.selectedPhotoItem) {
+                await viewModel.loadImageFromSelectedPhoto()
+            }
         }
     }
 }

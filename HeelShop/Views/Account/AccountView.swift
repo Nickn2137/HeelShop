@@ -27,9 +27,9 @@ struct AccountView: View {
                                     .font(.title2)
                                     .bold()
                                     .frame(maxWidth: .infinity, alignment: .center)
+                                    .foregroundColor(.primary)
                             }
                         }
-                        
                     }
                     .frame(height: 40)
                     .overlay(Divider(), alignment: .bottom)
@@ -62,10 +62,10 @@ struct AccountView: View {
                     Button {
                         Task {
                             do {
-                                try await SupabaseManager.shared.client.auth.signOut()
+                                try await SupabaseManager.shared.logout()
                                 isLoggedIn = false
                             } catch {
-                                print("❌ Logout failed: \(error.localizedDescription)")
+                                print("Logout failed: \(error.localizedDescription)")
                             }
                         }
                     } label: {

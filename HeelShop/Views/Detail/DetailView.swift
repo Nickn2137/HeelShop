@@ -8,15 +8,14 @@
 import SwiftUI
 
 struct DetailView: View {
-    
     let posting: Posting
     
     var body: some View {
         ScrollView {
             VStack {
                 postingRemoteImage(urlString: posting.imageUrl)
-                    .frame(width: 300, height: 300)
                     .aspectRatio(contentMode: .fill)
+                    .frame(width: 300, height: 300)
                     .cornerRadius(10)
                     .padding()
                 Divider()

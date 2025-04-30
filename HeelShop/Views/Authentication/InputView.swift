@@ -27,9 +27,10 @@ struct InputView: View {
                 HStack {
                     SecureField(placeholder, text: $text)
                         .font(.system(size: 14))
+                        .foregroundColor(.gray)
                     if let match = trailingIcon {
                         match ? Image(systemName: "checkmark.circle.fill").foregroundColor(.green)
-                        : Image(systemName: "x.circle.fill").foregroundColor(.red)
+                            : Image(systemName: "x.circle.fill").foregroundColor(.red)
                     }
                 }
                 .padding()
@@ -39,6 +40,7 @@ struct InputView: View {
                 HStack {
                     TextField(placeholder, text: $text)
                         .font(.system(size: 14))
+                        .foregroundColor(.gray)
                 }
                 .padding()
                 .background(Color.white)

@@ -10,9 +10,19 @@
 		2A4093592DB176D900320EEA /* Auth in Frameworks */ = {isa = PBXBuildFile; productRef = 2A4093582DB176D900320EEA /* Auth */; };
 		2A40935B2DB176D900320EEA /* PostgREST in Frameworks */ = {isa = PBXBuildFile; productRef = 2A40935A2DB176D900320EEA /* PostgREST */; };
 		2A40935D2DB176D900320EEA /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 2A40935C2DB176D900320EEA /* Supabase */; };
+		2A5639682DBD826400B9EB57 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A5639672DBD826400B9EB57 /* WidgetKit.framework */; };
+		2A56396A2DBD826400B9EB57 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A5639692DBD826400B9EB57 /* SwiftUI.framework */; };
+		2A5639752DBD826600B9EB57 /* HeelShopWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 2A5639652DBD826400B9EB57 /* HeelShopWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		2A5639732DBD826600B9EB57 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A7C08C72D2A160F00B5C511 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2A5639642DBD826400B9EB57;
+			remoteInfo = HeelShopWidgetExtension;
+		};
 		2A7C08E02D2A161200B5C511 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2A7C08C72D2A160F00B5C511 /* Project object */;
@@ -29,13 +39,49 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		2A5639762DBD826600B9EB57 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				2A5639752DBD826600B9EB57 /* HeelShopWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		2A5639652DBD826400B9EB57 /* HeelShopWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HeelShopWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A5639672DBD826400B9EB57 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		2A5639692DBD826400B9EB57 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		2A7C08CF2D2A160F00B5C511 /* HeelShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeelShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A7C08DF2D2A161200B5C511 /* HeelShopTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HeelShopTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A7C08E92D2A161200B5C511 /* HeelShopUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HeelShopUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2ABE500E2DC1523A00AC928F /* HeelShopWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HeelShopWidgetExtension.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		2A5639792DBD826600B9EB57 /* Exceptions for "HeelShopWidget" folder in "HeelShopWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 2A5639642DBD826400B9EB57 /* HeelShopWidgetExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		2A56396B2DBD826400B9EB57 /* HeelShopWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				2A5639792DBD826600B9EB57 /* Exceptions for "HeelShopWidget" folder in "HeelShopWidgetExtension" target */,
+			);
+			path = HeelShopWidget;
+			sourceTree = "<group>";
+		};
 		2A7C08D12D2A160F00B5C511 /* HeelShop */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = HeelShop;
@@ -54,6 +100,15 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2A5639622DBD826400B9EB57 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A56396A2DBD826400B9EB57 /* SwiftUI.framework in Frameworks */,
+				2A5639682DBD826400B9EB57 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2A7C08CC2D2A160F00B5C511 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -81,12 +136,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A5639662DBD826400B9EB57 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2A5639672DBD826400B9EB57 /* WidgetKit.framework */,
+				2A5639692DBD826400B9EB57 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		2A7C08C62D2A160F00B5C511 = {
 			isa = PBXGroup;
 			children = (
+				2ABE500E2DC1523A00AC928F /* HeelShopWidgetExtension.entitlements */,
 				2A7C08D12D2A160F00B5C511 /* HeelShop */,
 				2A7C08E22D2A161200B5C511 /* HeelShopTests */,
 				2A7C08EC2D2A161200B5C511 /* HeelShopUITests */,
+				2A56396B2DBD826400B9EB57 /* HeelShopWidget */,
+				2A5639662DBD826400B9EB57 /* Frameworks */,
 				2A7C08D02D2A160F00B5C511 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -97,6 +164,7 @@
 				2A7C08CF2D2A160F00B5C511 /* HeelShop.app */,
 				2A7C08DF2D2A161200B5C511 /* HeelShopTests.xctest */,
 				2A7C08E92D2A161200B5C511 /* HeelShopUITests.xctest */,
+				2A5639652DBD826400B9EB57 /* HeelShopWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -104,6 +172,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2A5639642DBD826400B9EB57 /* HeelShopWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2A56397A2DBD826600B9EB57 /* Build configuration list for PBXNativeTarget "HeelShopWidgetExtension" */;
+			buildPhases = (
+				2A5639612DBD826400B9EB57 /* Sources */,
+				2A5639622DBD826400B9EB57 /* Frameworks */,
+				2A5639632DBD826400B9EB57 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				2A56396B2DBD826400B9EB57 /* HeelShopWidget */,
+			);
+			name = HeelShopWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = HeelShopWidgetExtension;
+			productReference = 2A5639652DBD826400B9EB57 /* HeelShopWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		2A7C08CE2D2A160F00B5C511 /* HeelShop */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2A7C08F32D2A161200B5C511 /* Build configuration list for PBXNativeTarget "HeelShop" */;
@@ -111,10 +201,12 @@
 				2A7C08CB2D2A160F00B5C511 /* Sources */,
 				2A7C08CC2D2A160F00B5C511 /* Frameworks */,
 				2A7C08CD2D2A160F00B5C511 /* Resources */,
+				2A5639762DBD826600B9EB57 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				2A5639742DBD826600B9EB57 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				2A7C08D12D2A160F00B5C511 /* HeelShop */,
@@ -182,9 +274,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1610;
+				LastSwiftUpdateCheck = 1630;
 				LastUpgradeCheck = 1610;
 				TargetAttributes = {
+					2A5639642DBD826400B9EB57 = {
+						CreatedOnToolsVersion = 16.3;
+					};
 					2A7C08CE2D2A160F00B5C511 = {
 						CreatedOnToolsVersion = 16.1;
 					};
@@ -218,11 +313,19 @@
 				2A7C08CE2D2A160F00B5C511 /* HeelShop */,
 				2A7C08DE2D2A161200B5C511 /* HeelShopTests */,
 				2A7C08E82D2A161200B5C511 /* HeelShopUITests */,
+				2A5639642DBD826400B9EB57 /* HeelShopWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2A5639632DBD826400B9EB57 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2A7C08CD2D2A160F00B5C511 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -247,6 +350,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2A5639612DBD826400B9EB57 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2A7C08CB2D2A160F00B5C511 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -271,6 +381,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		2A5639742DBD826600B9EB57 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2A5639642DBD826400B9EB57 /* HeelShopWidgetExtension */;
+			targetProxy = 2A5639732DBD826600B9EB57 /* PBXContainerItemProxy */;
+		};
 		2A7C08E12D2A161200B5C511 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2A7C08CE2D2A160F00B5C511 /* HeelShop */;
@@ -284,6 +399,64 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		2A5639772DBD826600B9EB57 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = HeelShopWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5RP5P27646;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HeelShopWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = HeelShopWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nickn.HeelShop.HeelShopWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2A5639782DBD826600B9EB57 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = HeelShopWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5RP5P27646;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HeelShopWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = HeelShopWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nickn.HeelShop.HeelShopWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		2A7C08F12D2A161200B5C511 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -408,12 +581,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = HeelShop/HeelShop.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HeelShop/Preview Content\"";
 				DEVELOPMENT_TEAM = 5RP5P27646;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -437,12 +613,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = HeelShop/HeelShop.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HeelShop/Preview Content\"";
 				DEVELOPMENT_TEAM = 5RP5P27646;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -532,6 +711,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2A56397A2DBD826600B9EB57 /* Build configuration list for PBXNativeTarget "HeelShopWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A5639772DBD826600B9EB57 /* Debug */,
+				2A5639782DBD826600B9EB57 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2A7C08CA2D2A160F00B5C511 /* Build configuration list for PBXProject "HeelShop" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

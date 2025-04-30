@@ -11,8 +11,7 @@ struct Business: Hashable, Identifiable {
     let id = UUID()
 }
 
-struct MockBusinesses {
-    
+enum MockBusinesses {
     static let samepleBusiness = Business()
     
     static let businesses = [
@@ -45,6 +44,6 @@ struct MockBusinesses {
         Business(),
         Business(),
         Business(),
-        Business()
+        Business(),
     ]
 }

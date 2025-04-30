@@ -7,6 +7,7 @@
 
 import Foundation
 import Supabase
+import WidgetKit
 
 @MainActor
 class FavoriteViewModel: ObservableObject {
@@ -39,7 +40,7 @@ class FavoriteViewModel: ObservableObject {
                 .eq("post_id", value: posting.id)
                 .execute()
                 .value
-
+            
             isFavorited = !favorites.isEmpty
         } catch {
             isFavorited = false
@@ -64,10 +65,11 @@ class FavoriteViewModel: ObservableObject {
                     .from("favorites")
                     .insert(newFavorite)
                     .execute()
+                updateCartCount()
+                WidgetCenter.shared.reloadAllTimelines() // Trigger widget refresh
             }
-            
         } catch {
-            print("❌ Failed to add favorite:", error.localizedDescription)
+            print("Failed to add favorite:", error.localizedDescription)
         }
     }
     
@@ -81,9 +83,21 @@ class FavoriteViewModel: ObservableObject {
                 .eq("user_id", value: userId.uuidString)
                 .eq("post_id", value: posting.id)
                 .execute()
+            updateCartCount()
         } catch {
-            print("❌ Failed to remove favorite:", error.localizedDescription)
+            print("Failed to remove favorite:", error.localizedDescription)
         }
     }
-}
+    
+    private func updateCartCount() {
+        let currentFavoritesCount = fetchCurrentFavoritesCount()
 
+        if let sharedDefaults = UserDefaults(suiteName: "group.com.nicknguyen.heelshop") {
+            sharedDefaults.set(currentFavoritesCount, forKey: "cartItemCount")
+        }
+    }
+    
+    private func fetchCurrentFavoritesCount() -> Int {
+        return isFavorited ? 1 : 0
+    }
+}

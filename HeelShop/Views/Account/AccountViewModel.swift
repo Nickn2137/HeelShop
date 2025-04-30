@@ -32,36 +32,36 @@ class AccountViewModel: ObservableObject {
             }
             
             let decoded = try JSONDecoder().decode(Result.self, from: response.data)
-            self.profileImageUrl = decoded.image_url
+            profileImageUrl = decoded.image_url
         } catch {
-            print("❌ Failed to fetch profile image:", error.localizedDescription)
+            print("Failed to fetch profile image:", error.localizedDescription)
         }
     }
     
     func fetchUserListings() async {
-            guard let userId = SupabaseManager.shared.client.auth.currentUser?.id.uuidString else {
-                errorMessage = "Not logged in"
-                return
-            }
-
-            isLoading = true
-            defer { isLoading = false }
-
-            do {
-                let response = try await SupabaseManager.shared.client
-                    .from("listings")
-                    .select("*")
-                    .eq("user_id", value: userId)
-                    .execute()
-
-                let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
-
-                self.userPostings = try decoder.decode([Posting].self, from: response.data)
-            } catch {
-                errorMessage = "❌ Failed to fetch listings: \(error.localizedDescription)"
-            }
+        guard let userId = SupabaseManager.shared.client.auth.currentUser?.id.uuidString else {
+            errorMessage = "Not logged in"
+            return
         }
+
+        isLoading = true
+        defer { isLoading = false }
+
+        do {
+            let response = try await SupabaseManager.shared.client
+                .from("listings")
+                .select("*")
+                .eq("user_id", value: userId)
+                .execute()
+
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+
+            userPostings = try decoder.decode([Posting].self, from: response.data)
+        } catch {
+            errorMessage = "Failed to fetch listings: \(error.localizedDescription)"
+        }
+    }
     
     func deleteListing(_ id: String) async {
         do {
@@ -74,7 +74,7 @@ class AccountViewModel: ObservableObject {
             userPostings.removeAll { $0.id == id }
         } catch {
             errorMessage = "Failed to delete listing: \(error.localizedDescription)"
-            print("❌ Delete error:", error.localizedDescription)
+            print("Delete error:", error.localizedDescription)
         }
     }
 }

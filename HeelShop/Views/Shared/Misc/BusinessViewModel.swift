@@ -7,7 +7,6 @@
 
 import Foundation
 import SwiftUI
-
 import SwiftUI
 
 final class BusinessViewModel: ObservableObject {
@@ -22,7 +21,7 @@ final class BusinessViewModel: ObservableObject {
     }
     
     private func loadMockBusinesses() {
-        self.businesses = MockBusinesses.businesses
+        businesses = MockBusinesses.businesses
     }
     
     func fetchBusinesses() {

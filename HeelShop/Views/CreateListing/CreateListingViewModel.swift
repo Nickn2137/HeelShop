@@ -5,13 +5,12 @@
 //  Created by Nicholas Nguyen on 4/22/25.
 //
 
-import SwiftUI
 import PhotosUI
 import Storage
+import SwiftUI
 
 @MainActor
 class CreateListingViewModel: ObservableObject {
-    
     // Form properties
     @Published var title: String = ""
     @Published var description: String = ""
@@ -34,25 +33,26 @@ class CreateListingViewModel: ObservableObject {
     private var accountViewModel: AccountViewModel?
     
     init(homeViewModel: HomeViewModel, accountViewModel: AccountViewModel? = nil) {
-            self.accountViewModel = accountViewModel
-        }
+        self.accountViewModel = accountViewModel
+    }
     
     func loadImageFromSelectedPhoto() async {
         guard let item = selectedPhotoItem else { return }
         
         do {
             if let data = try await item.loadTransferable(type: Data.self),
-               let uiImage = UIImage(data: data) {
-                self.image = uiImage
+               let uiImage = UIImage(data: data)
+            {
+                image = uiImage
             }
         } catch {
-            self.errorMessage = "Failed to load image."
+            errorMessage = "Failed to load image."
         }
     }
     
     func submitListing() async {
         guard let user = SupabaseManager.shared.client.auth.currentUser else {
-            self.errorMessage = "Not logged in."
+            errorMessage = "Not logged in."
             return
         }
         
@@ -73,11 +73,12 @@ class CreateListingViewModel: ObservableObject {
                 
                 if let url = try? SupabaseManager.shared.client.storage
                     .from(storagePath)
-                    .getPublicURL(path: filePath) {
+                    .getPublicURL(path: filePath)
+                {
                     imageUrlString = url.absoluteString
                 }
             } catch {
-                self.errorMessage = "Image upload failed."
+                errorMessage = "Image upload failed."
                 return
             }
         }
@@ -97,13 +98,13 @@ class CreateListingViewModel: ObservableObject {
                 .insert(newPosting)
                 .execute()
             
-            print("✅ Listing successfully saved.")
-            self.submissionComplete = true
+            print("Listing successfully saved.")
+            submissionComplete = true
             homeViewModel?.getPostings()
             accountViewModel?.needsRefresh = true
         } catch {
-            print("❌ Failed to insert listing:", error.localizedDescription)
-            self.errorMessage = error.localizedDescription
+            print("Failed to insert listing:", error.localizedDescription)
+            errorMessage = error.localizedDescription
         }
     }
 }

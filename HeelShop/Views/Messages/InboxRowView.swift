@@ -42,8 +42,8 @@ struct InboxRowView: View {
                 .overlay(
                     Image("user")
                         .resizable()
-                        .frame(width: 32, height: 32) // Set circular image size
-                        .clipShape(Circle()) // Make the image circular
+                        .frame(width: 32, height: 32)
+                        .clipShape(Circle())
                         .shadow(radius: 5)
                         .overlay(
                             Circle()

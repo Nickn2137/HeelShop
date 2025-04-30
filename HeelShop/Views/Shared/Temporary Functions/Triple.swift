@@ -5,8 +5,7 @@
 //  Created by Nicholas Nguyen on 1/15/25.
 //
 
-
-//MOCK TRIPLE FUNC
+// MOCK TRIPLE FUNC
 func tripleArray(input: [Posting]) -> [Posting] {
     return Array(repeating: input, count: 3)
         .flatMap { $0 }

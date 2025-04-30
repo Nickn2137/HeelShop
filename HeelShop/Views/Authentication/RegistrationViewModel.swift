@@ -33,9 +33,8 @@ class RegistrationViewModel: ObservableObject {
             UserDefaults.standard.set(true, forKey: "isLoggedIn")
 
         } catch {
-            self.errorMessage = error.localizedDescription
-            print("❌ Sign-up failed:", error.localizedDescription)
+            errorMessage = error.localizedDescription
+            print("Sign-up failed:", error.localizedDescription)
         }
     }
 }
-

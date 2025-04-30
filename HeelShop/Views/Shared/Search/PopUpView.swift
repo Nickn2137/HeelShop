@@ -5,9 +5,9 @@
 ////  Created by Nicholas Nguyen on 1/18/25.
 ////
 //
-//import SwiftUI
+// import SwiftUI
 //
-//struct PopUpView: View {
+// struct PopUpView: View {
 //    @Binding var isVisible: Bool
 //
 //    var body: some View {
@@ -31,8 +31,8 @@
 //            .shadow(radius: 10)
 //        }
 //    }
-//}
+// }
 //
-//#Preview {
+// #Preview {
 //    PopUpView(isVisible: .constant(true))
-//}
+// }

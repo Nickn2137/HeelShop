@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSExtension</key>
+	<dict>
+		<key>Description</key>
+		<string>Displays saved listings count.</string>
+		<key>DisplayName</key>
+		<string>Saved Listings Widget</string>
+		<key>NSWidgetFamily</key>
+		<array>
+			<string>com.apple.widget-family.large</string>
+			<string>com.apple.widget-family.medium</string>
+			<string>com.apple.widget-family.small</string>
+		</array>
+		<key>NSExtensionPointIdentifier</key>
+		<string>com.apple.widgetkit-extension</string>
+	</dict>
+</dict>
+</plist>

@@ -17,7 +17,7 @@ struct Posting: Hashable, Decodable, Identifiable {
     var isDiscounted: Bool?
 }
 
-struct MockData {
+enum MockData {
     static let fakePosting = Posting(
         id: "",
         title: "Fake Item",
@@ -28,7 +28,7 @@ struct MockData {
         isDiscounted: true
     )
     
-    static let postings: [Posting] = (0..<4).map { i in
+    static let postings: [Posting] = (0 ..< 4).map { i in
         Posting(
             id: UUID().uuidString,
             title: "Fake Item",
@@ -40,4 +40,3 @@ struct MockData {
         )
     }
 }
-

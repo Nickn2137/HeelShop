@@ -18,9 +18,10 @@ enum Secrets {
     
     private static func getPlistValue(forKey key: String) -> String {
         guard let path = Bundle.main.path(forResource: "Keys", ofType: "plist"),
-              let dict = NSDictionary (contentsOfFile: path),
-              let value = dict[key] as? String else {
-            fatalError("❌ Could not load value for key '\(key)' from Keys.plist")
+              let dict = NSDictionary(contentsOfFile: path),
+              let value = dict[key] as? String else
+        {
+            fatalError("Could not load value for key '\(key)' from Keys.plist")
         }
         return value
     }

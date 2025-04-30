@@ -46,7 +46,6 @@ struct ProfileImageView: View {
     }
 }
 
-
 #Preview {
     ProfileImageView(urlString: nil, size: 100)
 }

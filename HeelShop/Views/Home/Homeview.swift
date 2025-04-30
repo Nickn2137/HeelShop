@@ -11,7 +11,7 @@ struct Homeview: View {
     @ObservedObject var homeViewModel: HomeViewModel
     
     var body: some View {
-        NavigationStack{
+        NavigationStack {
             VStack {
                 Search()
                 HomeGridView(homeViewModel: homeViewModel)

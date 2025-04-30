@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct HomeGridView: View {
-    
     @ObservedObject var homeViewModel: HomeViewModel
     @StateObject var businessViewModel = BusinessViewModel()
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         NavigationStack {
@@ -23,7 +23,7 @@ struct HomeGridView: View {
                             LazyHGrid(rows: homeViewModel.single) {
                                 ForEach(businessViewModel.businesses) { business in
                                     Button {
-                                        //TODO: Business detail view
+                                        // TODO: Business detail view
                                     } label: {
                                         Image("business")
                                             .resizable()
@@ -38,21 +38,21 @@ struct HomeGridView: View {
                         // Trending Products Section
                         SeeAll(title: "TRENDING PRODUCTS", showButton: true)
                         
-                        
                         // !!! TEMPORARY "dummyPostings" VARIABLE !!!
                         
                         if homeViewModel.postings.isEmpty {
                             VStack {
-                                Image(.emptyimage)
+                                Image(colorScheme == .dark ? .inverted : .emptyimage)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(width: 300, height: 300)
+                                    .frame(width: 250, height: 250)
                                     .opacity(0.80)
-                                Text("No current listings")
-                                    .font(.title)
-                                    .foregroundColor(.black)
+                                Text("No current listings.")
+                                    .font(.title2)
+                                    .foregroundColor(.gray)
+                                    .fontDesign(.rounded)
                                     .frame(maxWidth: .infinity, alignment: .center)
-                                    .opacity(0.80)
+                                    .fontWeight(.bold)
                             }
                             .padding()
                         } else {
@@ -63,7 +63,7 @@ struct HomeGridView: View {
                                             ProductCell(posting: posting, width: 150, height: 150)
                                             HStack {
                                                 Text("$\(posting.price ?? 0, specifier: "%.2f")")
-                                                    .foregroundColor(.black)
+                                                    .foregroundColor(.primary)
                                                     .bold()
                                                 Spacer()
                                                 FavoriteView(posting: posting)
@@ -73,13 +73,13 @@ struct HomeGridView: View {
                                     }
                                 }
                             }
-                            .navigationDestination(for: Posting.self) { posting in DetailView(posting: posting)}
+                            .navigationDestination(for: Posting.self) { posting in DetailView(posting: posting) }
                         }
                     }
                     .padding(15)
                 }
                 .scrollIndicators(.hidden)
-                .onAppear() {
+                .onAppear {
                     homeViewModel.getPostings()
                 }
                 if homeViewModel.isLoading {
@@ -88,9 +88,11 @@ struct HomeGridView: View {
             }
         }
         .alert(item: $homeViewModel.alertItem) { alertItem in
-            Alert(title: alertItem.title,
-                  message: alertItem.message,
-                  dismissButton: alertItem.dismissButton)
+            Alert(
+                title: alertItem.title,
+                message: alertItem.message,
+                dismissButton: alertItem.dismissButton
+            )
         }
     }
 }

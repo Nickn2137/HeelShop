@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 final class NetworkManager {
-    
     static let shared = NetworkManager()
     private let cache = NSCache<NSString, UIImage>()
     
@@ -19,7 +18,7 @@ final class NetworkManager {
         return [
             "apikey": Secrets.anonKey,
             "Authorization": "Bearer \(Secrets.anonKey)",
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
         ]
     }
     
@@ -65,7 +64,7 @@ final class NetworkManager {
     }
     
     func downloadImage(fromURLString urlString: String, completed: @escaping (UIImage?) -> Void) {
-        let cacheKey = NSString(string:urlString) // Converts urlString to NSString to be used as a key
+        let cacheKey = NSString(string: urlString) // Converts urlString to NSString to be used as a key
         
         if let image = cache.object(forKey: cacheKey) { // Checks if image is cached; return immediately if it exists.
             completed(image)
@@ -78,7 +77,7 @@ final class NetworkManager {
         }
         
         let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, response, error in // Network call; sends HTTP request to fetch data asynchronously
-            guard let data = data, let image = UIImage(data:data) else {
+            guard let data = data, let image = UIImage(data: data) else {
                 completed(nil)
                 return
             }
@@ -88,7 +87,7 @@ final class NetworkManager {
         task.resume()
     }
     
-    func createListing(posting: NewPosting, completed: @escaping(Result<Void, PError>) -> Void) {
+    func createListing(posting: NewPosting, completed: @escaping (Result<Void, PError>) -> Void) {
         guard let url = URL(string: listingsEndpoint) else {
             completed(.failure(.invalidURL))
             return

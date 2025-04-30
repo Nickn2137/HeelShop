@@ -7,12 +7,11 @@
 
 import SwiftUI
 
-
 struct Search: View {
     @State private var showCart = false
     
     var body: some View {
-        HStack{
+        HStack {
             Rectangle()
                 .fill(Color("empty"))
                 .frame(width: 300, height: 35)
@@ -25,11 +24,10 @@ struct Search: View {
                 Image(systemName: "bag")
                     .resizable()
                     .frame(width: 35, height: 35)
-                    .foregroundColor(.black)
+                    .foregroundColor(.primary)
             }
-            
         }
-        .padding(15)
+        .padding(.horizontal, 15)
         .sheet(isPresented: $showCart) {
             CartListingView()
         }

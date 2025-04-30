@@ -7,30 +7,30 @@
 //
 //// WORK IN PROCESS...
 //
-//import SwiftUI
+// import SwiftUI
 //
-//struct SearchView: View {
-//    
+// struct SearchView: View {
+//
 //    @StateObject var searchViewModel = HomeViewModel()
 //    @State private var isPopUpVisible = false
 //    @State private var searchText = ""
-//    
+//
 //    var filteredPostings: [Posting] {
 //        guard !searchText.isEmpty else { return searchViewModel.postings }
 //        return searchViewModel.postings.filter {$0.title.localizedCaseInsensitiveContains(searchText)}
 //    }
-//    
+//
 //    var body: some View {
 //        NavigationStack {
 //            VStack {
-//                
+//
 //                if searchViewModel.isLoading {
 //                    LoadingView()
 //                } else {
 //                    LazyVGrid(columns: searchViewModel.double) {
-//                        
+//
 //                        // !!! TEMPORARY "dummyPostings" VARIABLE !!!
-//                        
+//
 //                        ForEach(filteredPostings) { posting in
 //                            NavigationLink(value: posting) {
 //                                VStack{
@@ -52,8 +52,8 @@
 //            }
 //        }
 //    }
-//}
+// }
 //
-//#Preview {
+// #Preview {
 //    SearchView()
-//}
+// }

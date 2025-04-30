@@ -5,9 +5,8 @@
 //  Created by Nicholas Nguyen on 1/5/25.
 //
 
-import SwiftUICore
 import SwiftUI
-
+import SwiftUICore
 
 struct SeeAll: View {
     var title: String
@@ -17,6 +16,7 @@ struct SeeAll: View {
         HStack {
             Text(title)
                 .font(.system(size: 25))
+                .fontDesign(.rounded)
                 .multilineTextAlignment(.leading)
             
             Spacer()
@@ -26,12 +26,15 @@ struct SeeAll: View {
                     // Action for See All
                 }) {
                     Text("See All")
+                        .fontDesign(.rounded)
                         .foregroundColor(.blue) // Example styling
                 }
-            } else {
-                
-            }
+            } else {}
         }
-        .padding(.vertical, 10)
+        Divider()
     }
+}
+
+#Preview {
+    SeeAll(title: "TRENDING PRODUCTS", showButton: true)
 }

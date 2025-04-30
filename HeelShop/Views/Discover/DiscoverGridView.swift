@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct DiscoverGridView: View {
-    
     @StateObject var discoverViewModel = DiscoverViewModel()
     @StateObject var businessViewModel = BusinessViewModel()
     
@@ -23,7 +22,7 @@ struct DiscoverGridView: View {
                             LazyHGrid(rows: discoverViewModel.single) {
                                 ForEach(businessViewModel.businesses) { business in
                                     Button {
-                                        //TODO
+                                        // TODO:
                                     } label: {
                                         Image("business")
                                             .resizable()
@@ -57,24 +56,24 @@ struct DiscoverGridView: View {
                         }
                         
                         // DISCOUNTS
-                        //TODO "discoverGridViewModel.dummyPostings.filter { $0.isDiscounted == true }" SHOULD NOT BE IN FINAL
+                        // TODO: "discoverGridViewModel.dummyPostings.filter { $0.isDiscounted == true }" SHOULD NOT BE IN FINAL
                         SeeAll(title: "DISCOUNTS & DEALS", showButton: true)
                         ScrollView(.horizontal, showsIndicators: false) {
                             LazyHGrid(rows: discoverViewModel.discountRows) {
-                                ForEach(discoverViewModel.discountedPostings) {posting in
+                                ForEach(discoverViewModel.discountedPostings) { posting in
                                     NavigationLink(value: posting) {
                                         ProductCell(posting: posting, width: 150, height: 150)
                                     }
                                 }
                             }
-                            .navigationDestination(for: Posting.self) { posting in DetailView(posting: posting)}
+                            .navigationDestination(for: Posting.self) { posting in DetailView(posting: posting) }
                         }
                     }
                 }
-                .padding(15)
+                .padding(.horizontal, 15)
                 .scrollIndicators(.hidden)
             }
-            .onAppear() {
+            .onAppear {
                 discoverViewModel.getPostings()
             }
             if discoverViewModel.isLoading {
@@ -82,13 +81,14 @@ struct DiscoverGridView: View {
             }
         }
         .alert(item: $discoverViewModel.alertItem) { alertItem in
-            Alert(title: alertItem.title,
-                  message: alertItem.message,
-                  dismissButton: alertItem.dismissButton)
+            Alert(
+                title: alertItem.title,
+                message: alertItem.message,
+                dismissButton: alertItem.dismissButton
+            )
         }
     }
 }
-
 
 #Preview {
     DiscoverGridView()

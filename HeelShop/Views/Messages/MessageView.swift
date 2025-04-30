@@ -9,33 +9,30 @@ import SwiftUI
 
 struct MessageView: View {
     var body: some View {
-        NavigationStack{
-            
-            //HEADER
+        NavigationStack {
             VStack(spacing: 0) {
                 ZStack {
                     Text("Inbox")
                         .font(.title2)
                         .bold()
-                        .frame(maxWidth: .infinity, alignment: .center) // Center the text
+                        .frame(maxWidth: .infinity, alignment: .center)
                     
                     HStack {
-                        Spacer() // Push the image to the far right
+                        Spacer()
                         
                         Image(systemName: "bell")
                             .resizable()
                             .frame(width: 25, height: 25)
-
                     }
                     .padding()
                 }
                 .frame(height: 40)
                 .overlay(Divider(), alignment: .bottom)
                 
-                //MESSAGE LIST
+                // MESSAGE LIST
                 
                 List {
-                    ForEach(0...10, id: \.self) { message in
+                    ForEach(0 ... 10, id: \.self) { message in
                         InboxRowView()
                             .listRowSeparator(.hidden)
                     }

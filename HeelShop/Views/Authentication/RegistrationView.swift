@@ -22,14 +22,13 @@ struct RegistrationView: View {
     
     private var isFormValid: Bool {
         !email.trimmingCharacters(in: .whitespaces).isEmpty &&
-        !username.trimmingCharacters(in: .whitespaces).isEmpty &&
-        !password.trimmingCharacters(in: .whitespaces).isEmpty &&
-        password == confirmpassword
+            !username.trimmingCharacters(in: .whitespaces).isEmpty &&
+            !password.trimmingCharacters(in: .whitespaces).isEmpty &&
+            password == confirmpassword
     }
     
     var body: some View {
         VStack(spacing: 20) {
-            
             Spacer()
             
             // Logo
@@ -46,8 +45,9 @@ struct RegistrationView: View {
                 text: $password,
                 title: "Password",
                 placeholder: "Enter your password",
-                isSecureField: true)
-                .autocapitalization(.none)
+                isSecureField: true
+            )
+            .autocapitalization(.none)
             InputView(
                 text: $confirmpassword,
                 title: "Confirm Password",
@@ -55,10 +55,9 @@ struct RegistrationView: View {
                 isSecureField: true,
                 trailingIcon: passwordsMatch
             )
-                .autocapitalization(.none)
+            .autocapitalization(.none)
             
             // Sign up button
-            
             Button {
                 Task {
                     await viewModel.signUp(email: email, username: username, password: password)
@@ -80,7 +79,7 @@ struct RegistrationView: View {
             .padding(.top, 24)
             
             if let error = viewModel.errorMessage {
-                Text("❌ \(error)")
+                Text("\(error)")
                     .foregroundColor(.red)
                     .font(.footnote)
                     .multilineTextAlignment(.center)

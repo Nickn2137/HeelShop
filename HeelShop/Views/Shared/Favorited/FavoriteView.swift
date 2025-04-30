@@ -20,7 +20,6 @@ struct FavoriteView: View {
     }
     
     var body: some View {
-        
         Image(systemName: viewModel.isFavorited ? "heart.fill" : "heart")
             .font(.system(size: 25))
             .foregroundColor(viewModel.isFavorited ? .red : .gray)
@@ -39,8 +38,6 @@ struct FavoriteView: View {
     }
 }
 
-
 #Preview {
     FavoriteView(posting: MockData.fakePosting)
 }
-

@@ -16,7 +16,7 @@ struct CartListingView: View {
                 if viewModel.isLoading {
                     LoadingView()
                 } else {
-                    //HEADER
+                    // HEADER
                     VStack(spacing: 0) {
                         ZStack {
                             Text("Favorites")
@@ -27,7 +27,7 @@ struct CartListingView: View {
                         .frame(height: 40)
                         .overlay(Divider(), alignment: .bottom)
                         
-                        //MESSAGE LIST
+                        // MESSAGE LIST
                         if viewModel.cart.isEmpty {
                             Spacer()
                             Text("Your cart is empty")

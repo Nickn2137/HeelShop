@@ -17,7 +17,7 @@ struct PostingListView: View {
     }
 
     var body: some View {
-        HStack{
+        HStack {
             postingRemoteImage(urlString: posting.imageUrl)
                 .scaledToFill()
                 .frame(width: 100, height: 100)

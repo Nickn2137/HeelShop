@@ -52,4 +52,3 @@ struct AccountListView: View {
 #Preview {
     AccountListView(posting: MockData.fakePosting)
 }
-
