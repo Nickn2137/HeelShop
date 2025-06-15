@@ -18,7 +18,7 @@ class RegistrationViewModel: ObservableObject {
 
             let user = response.user
 
-            let newUser = NewUser(
+            let newUser = AppUser(
                 id: user.id.uuidString,
                 email: email,
                 username: username,
